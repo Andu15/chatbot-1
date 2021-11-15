@@ -7,7 +7,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <p>
-          Hola React
+          Hola React! para el mundo
         </p>
       </header>
     </div>

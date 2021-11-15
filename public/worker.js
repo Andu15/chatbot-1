@@ -1,21 +1,25 @@
+/* eslint-disable no-restricted-globals */
 //name of your app
-const CACHE_NAME = 'chatbot';
+const CACHE_NAME = 'v1_chatbot_tottus';
 //include all routes used in app
-const urlsToCache = ['/'];
+const urlsToCache = ['/', './index.html'];
 
-// Install a service worker
+// Install a service worker(se almacena en caché los activos estaticos)
 self.addEventListener('install', (event) => {
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('Opened cache');
-      return cache.addAll(urlsToCache);
+      return cache.addAll(urlsToCache)
+        .then(()=>self.skipWaiting())
     })
+    .catch(err=>console.log("fallo registro de cache", err))
   );
 });
 
 // Cache and return requests
 self.addEventListener('fetch', (event) => {
+  //responde ya sea con el objeto en caché o continuar y busca la url real
   event.respondWith(
     caches.match(event.request).then(function (response) {
       // Cache hit - return response
@@ -29,16 +33,18 @@ self.addEventListener('fetch', (event) => {
 
 // Update a service worker
 self.addEventListener('activate', (event) => {
-  var cacheWhitelist = ['pwa-grocery-list'];
+  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys()
+      .then((cacheNames) => {
         cacheNames.map((cacheName) => {
+          //eliminamos lo que ya no se necesita en cache
           if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
         })
-      );
     })
+    //le indica al SW activar el cache actual
+    .then((self.clients.claim()))
   );
 });
