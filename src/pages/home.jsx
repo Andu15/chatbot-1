@@ -1,11 +1,9 @@
-import React from 'react'
+import logo from '../assets/tottusLogo.png';
 
-function Home() {
+const Home = () => {
   return (
     <section>
-      <div>
-        <img src='../assets/tottusLogo.png' />
-      </div>
+      
     </section>
   )
 }
