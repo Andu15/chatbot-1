@@ -1,11 +1,9 @@
-import { Layout, Row, Col } from 'antd';
+import logo from '../assets/tottusLogo.png';
 
 const Home = () => {
   return (
     <section>
-      <div>
-        <img src='../assets/tottusLogo.png' />
-      </div>
+      
     </section>
   )
 }

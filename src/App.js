@@ -1,16 +1,12 @@
 import React from 'react';
-// import './App.css';
-
+import Home from './pages/home.jsx';
 
 const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hola React! para el mundo
-        </p>
-      </header>
-    </div>
+    <>
+      <Home />
+    </>
   );
 }
 
