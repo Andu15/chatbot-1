@@ -11,6 +11,37 @@ body{
   background-color: map-get($color,greenLight);
 }
 
+/*Carrusel*/
+
+.cardCarousel {
+  height: 100px;
+  margin-left: 100px;
+}
+
+.plano {
+  width: 418px;
+  height: 507px;
+  left: 5px;
+  top: 165px;
+}
+
+.contentCarruselt {
+  width: 428px;
+  height: 250px;
+  left: 0px;
+  top: 678px;
+}
+
+.buttonCar {
+  background-color: black;
+}
+
+.carousel {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .containerProducts {
   padding: 10px 30px 40px;
 }
