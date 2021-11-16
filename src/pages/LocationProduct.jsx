@@ -1,7 +1,10 @@
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
-const LocationProduct = () => {
+const LocationProduct = ({apiGetCategori, apiGetProduct}) => {
+
+  // console.log(apiGetCategori, apiGetProduct)
+  // const {name} = apiGetCategori;
 
   let {search} = useLocation();
   let query = new URLSearchParams(search);
