@@ -1,10 +1,17 @@
-import React from 'react'
-import chocolate from '../img/chocolate.jpg'
-import galleta from '../img/galleta.jpg'
-import paneton from '../img/paneton.jpg'
-import ubicacion from '../img/ubicacion.png'
+import { useLocation } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
-function LocationProduct() {
+const LocationProduct = () => {
+
+  let {search} = useLocation();
+  let query = new URLSearchParams(search);
+  const tokenPar = query.getAll("token")[0];
+  const decoded = jwt_decode(tokenPar);
+  console.log(decoded);
+  const pasilloProd = decoded.codigopasillo;
+
+  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${decoded.codigopasillo}.jpg`;
+
   return (
     <section className='d-flex flex-column'>
       <div className="containerBack">
@@ -46,4 +53,4 @@ function LocationProduct() {
   )
 }
 
-export default LocationProduct
+export default LocationProduct;

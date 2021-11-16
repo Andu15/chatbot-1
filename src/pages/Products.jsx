@@ -3,7 +3,9 @@ import smallLogo from '../assets/logoTottus-64x64.png';
 import {Card} from '../components/Card';
 import { Search } from '../components/Search';
 
+
 const Products = () => {
+
   return (
     <section className="">
       <section className="headerProducts">
