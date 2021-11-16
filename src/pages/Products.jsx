@@ -1,12 +1,15 @@
-import logo from '../assets/tottusLogo.png';
+//import logo from '../assets/tottusLogo.png';
+import smallLogo from '../assets/logoTottus-64x64.png';
+import {Card} from '../components/Card';
+import { Search } from '../components/Search';
 
 const Products = () => {
   return (
-    <section>
-      <section>
+    <section className="">
+      <section className="headerProducts">
         <div class="row">
           <div class="col">
-            <img src={logo}/>
+            <img src={smallLogo}/>
           </div>
         </div>
         <div class="row">
@@ -16,14 +19,15 @@ const Products = () => {
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col d-flex mt-3">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
             <p>Tottus Angamos</p>
           </div>
         </div>
       </section>
-
+      <Search/>
+      <Card/>
       <section></section>
-
     </section>
   )
 }

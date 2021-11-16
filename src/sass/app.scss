@@ -11,6 +11,32 @@ body{
   background-color: map-get($color,greenLight);
 }
 
+.containerProducts {
+  padding: 10px 30px 40px;
+}
+.headerProducts {
+  background-color: map-get($color,colorWhite);
+  padding: 10px 30px 0px;
+}
+.headerProducts img {
+  width: 15%;
+  margin: 0px 0px 30px;
+}
+.headerProducts h1 {
+  color: map-get($color,greenMedium);
+  font-size: map-get($font-size,x);
+}
+.headerProducts hr {
+  color: map-get($color,greenMedium);
+  width: 30px;
+  height: 2px;
+  margin: 0px;
+}
+.headerProducts i {
+  font-size: 25px;
+  color: map-get($color,greenMedium);
+  margin-right: 5px;
+}
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));
   background-image: url('../assets/img/background-stars.jpg');
