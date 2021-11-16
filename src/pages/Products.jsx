@@ -3,24 +3,26 @@ import smallLogo from '../assets/logoTottus-64x64.png';
 import {Card} from '../components/Card';
 import { Search } from '../components/Search';
 
+
 const Products = () => {
+
   return (
     <section className="">
       <section className="headerProducts">
-        <div class="row">
-          <div class="col">
-            <img src={smallLogo} alt="smallLogo"/>
+        <div className="row">
+          <div className="col">
+            <img src={smallLogo} alt = "smallLogo"/>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
             <h1>Explora</h1>
             <hr />
           </div>
         </div>
-        <div class="row">
-          <div class="col d-flex mt-3">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+        <div className="row">
+          <div className="col d-flex mt-3">
+            <i className="fa fa-map-marker" aria-hidden="true"></i>
             <p>Tottus Angamos</p>
           </div>
         </div>
