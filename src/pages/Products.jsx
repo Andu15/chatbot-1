@@ -25,9 +25,14 @@ const Products = () => {
           </div>
         </div>
       </section>
-      <Search/>
-      <Card/>
-      <section></section>
+        <Search/>
+      <section className="titleProducts">
+        <h2>Nuestros productos</h2>
+      </section>
+      <section className="containerProduts">
+        <Card/>
+      </section>
+      
     </section>
   )
 }
