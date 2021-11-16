@@ -3,7 +3,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  useParams
 } from "react-router-dom";
 import Products from './pages/Products.jsx';
 import LocationProduct from './pages/LocationProduct.jsx';
