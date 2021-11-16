@@ -6,7 +6,7 @@ const Products = () => {
       <section>
         <div class="row">
           <div class="col">
-            <img src={logo}/>
+            <img src={logo} alt = "logo"/>
           </div>
         </div>
         <div class="row">

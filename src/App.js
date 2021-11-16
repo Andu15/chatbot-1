@@ -20,6 +20,7 @@ const App = () => {
           <Route  path="/products" element={<Products />} />
           <Route  path="/location" element={<LocationProduct />} />
           <Route  path="/stock" element={<StockProduct />} />
+
           <Route
             path="*"
             element={<Error404 />}
