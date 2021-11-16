@@ -12,9 +12,9 @@ const LocationProduct = () => {
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
   console.log(decoded);
-  const pasilloProd = decoded.codigopasillo;
+  const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
-  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${decoded.codigopasillo}.jpg`;
+  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
 
   return (
     <section className='d-flex flex-column'>
@@ -23,10 +23,10 @@ const LocationProduct = () => {
         <p>¿Quieres consultar otro producto?</p>
       </div>
       <div className="containerTextProduct">
-        <p>Paneton</p>
+        <p>{decoded.codigocategoria}</p>
       </div>
       <div className="containerImage">
-        <img src={ubicacion} alt=''/>
+        <img src={url} alt=''/>
       </div>
       <div className="col titleCarousel">
           <h1>Productos en este pasillo</h1>
@@ -35,13 +35,13 @@ const LocationProduct = () => {
       <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={chocolate} className="d-block w-100" alt="..." className='cardCarousel' />
+            {/* <img src={chocolate} className="d-block w-100" alt="..." className='cardCarousel' /> */}
           </div>
           <div className="carousel-item">
-            <img src={galleta} className="d-block w-100" alt="..." className='cardCarousel' />
+            {/* <img src={galleta} className="d-block w-100" alt="..." className='cardCarousel' /> */}
           </div>
           <div className="carousel-item">
-            <img src={paneton} className="d-block w-100" alt="..." className='cardCarousel' />
+            {/* <img src={paneton} className="d-block w-100" alt="..." className='cardCarousel' /> */}
           </div>
         </div>
         <button className="carousel-control-prev buttonCar" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
