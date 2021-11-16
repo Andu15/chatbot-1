@@ -7,8 +7,9 @@ import ubicacion from '../img/ubicacion.png'
 function LocationProduct() {
   return (
     <section className='contenedorTotal d-flex flex-column'>
-      <div>
-      <button className="" type="button" ></button>
+      <div className='d-flex flex-row'>
+      <button  type="button" ><i class="fas fa-chevron-left"></i> </button>
+      <p>¿Quieres consultar otro producto?</p>
       </div>
       <div>
         <img src={ubicacion} alt='' className='plano'/>

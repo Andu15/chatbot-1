@@ -11,13 +11,14 @@ body{
   background-color: map-get($color,greenLight);
 }
 
+/*Carrusel*/
+
 .cardCarousel {
   height: 100px;
   margin-left: 100px;
 }
 
 .plano {
-  
   width: 418px;
   height: 507px;
   left: 5px;
@@ -25,11 +26,10 @@ body{
 }
 
 .contentCarruselt {
-  
-width: 428px;
-height: 250px;
-left: 0px;
-top: 678px;
+  width: 428px;
+  height: 250px;
+  left: 0px;
+  top: 678px;
 }
 
 .buttonCar {
@@ -38,10 +38,107 @@ top: 678px;
 
 .carousel {
   position: absolute;
-    bottom: 0;
-    width: 100%;
+  bottom: 0;
+  width: 100%;
 }
 
+.containerProducts {
+  padding: 10px 30px 40px;
+}
+.headerProducts {
+  background-color: map-get($color,colorWhite);
+  padding: 10px 30px 0px;
+  margin-bottom: 20px;
+}
+.headerProducts img {
+  width: 15%;
+  margin: 0px 0px 30px;
+}
+.headerProducts h1 {
+  color: map-get($color,greenMedium);
+  font-size: map-get($font-size,x);
+}
+.headerProducts hr {
+  color: map-get($color,greenMedium);
+  width: 30px;
+  height: 2px;
+  margin: 0px;
+}
+.headerProducts i {
+  font-size: 25px;
+  color: map-get($color,greenMedium);
+  margin-right: 5px;
+}
+
+/* searchProducts */
+.searchProducts {
+  margin: 0px 30px 30px;
+}
+
+.mySearchProducts {
+  text-decoration: none;
+  border-radius: 10px;
+  border: 0px;
+  background-color: map-get($color,colorWhite);
+  color: map-get($color,greenMedium);
+}
+.mySearchProducts::placeholder {
+  color: map-get($color,greenMedium);
+}
+.titleProducts {
+  color: map-get($color,greyLight);
+  margin-left: 30px;
+}
+.titleProducts h2 {
+  font-size: map-get($font-size,ml);
+}
+
+/*containerProduts*/
+.myCard {
+  width: 150px;
+  background-color: map-get($color,colorWhite);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  //margin: 20px 20px 20px 0px;
+}
+.myCard img {
+  width: 55%;
+  margin: 10px 10px 5px;
+}
+.containerProduts {
+  margin: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.myCard h5 {
+  font-size: map-get($font-size,m);
+  color: map-get($color,greyLight);
+  text-align: center;
+  margin: 0;
+}
+.myCard p {
+  font-size: map-get($font-size,m);
+  color: map-get($color,greenDark);
+  text-align: center;
+  margin: 0;
+}
+.cardButtons {
+  display: flex;
+  flex-direction: column;
+}
+.cardButtons button {
+  font-size: map-get($font-size,s);
+  width: 130px;
+  padding: 2px;
+  border-radius: 10px;
+  border: 1px solid #10C94A;
+  margin: 5px;
+  background-color: map-get($color,colorWhite);
+  color: map-get($color,greenMedium);
+}
 
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));
