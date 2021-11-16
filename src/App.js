@@ -17,22 +17,10 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-<<<<<<< HEAD
-          <Route  path="/" element={<Home />} />
-          <Route  path="/products" element={<Products />} />
-          <Route  path="/location" element={<LocationProduct />} />
-          <Route  path="/stock" element={<StockProduct />} />
-
-          <Route
-            path="*"
-            element={<Error404 />}
-          />
-=======
           <Route path="/locationproduct" element={<LocationProduct />}/>
           <Route path="/stockproduct" element={<StockProduct />} />
           <Route path="/experienciatienda" element={<Products />} />
           <Route path="*" element={<Error404 />} />
->>>>>>> c649e9672b8d172a5c4f75f8ccfd6e1457afc441
         </Routes>
       </BrowserRouter>
     </>
