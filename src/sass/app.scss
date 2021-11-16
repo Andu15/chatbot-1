@@ -11,6 +11,57 @@ body{
   background-color: map-get($color,greenLight);
 }
 
+.containerFigure {
+  display: contents;
+}
+
+.containerError {
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divContainer {
+  height: 140px;
+  max-width: 100%;
+  margin: 15px auto;
+  @include breakpoint(765px) {
+    height: 100px;
+    margin: 30px auto;
+  }
+}
+
+.titleError {
+  font-size: 25px;
+  color: map-get($color, greyLight );
+  @include breakpoint(765px) {
+    font-size: 30px;
+  }
+}
+
+.descriptionError {
+  font-size: 15px;
+  @include breakpoint(765px) {
+    font-size: 20px;
+  }
+}
+
+.btnHome {
+  background: map-get($color, greenMedium );
+  border: none;
+  border-radius: 10px;
+}
+
+.btnHome a {
+  color: map-get($color, greenLight );
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));
   background-image: url('../assets/img/background-stars.jpg');

@@ -6,12 +6,12 @@ const Home = () => {
     <section class="container">
       <div class="row">
         <div class="d-grid gap-1 col-3 mx-auto">
-          <img src={logo}/>
+          <img src={logo} alt="logo tottus"/>
         </div>
       </div>
       <div class="row">
         <div class="d-grid gap-1 col-6 mx-auto">
-          <img src={supermarket}/>
+          <img src={supermarket} alt="imagen super market"/>
         </div>
       </div>
       <div class="row">
