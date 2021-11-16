@@ -10,6 +10,7 @@ import LocationProduct from './pages/LocationProduct.jsx';
 import StockProduct from './pages/StockProduct.jsx';
 import Error404 from './pages/Error404';
 
+
 const App = () => {
 
   return (
