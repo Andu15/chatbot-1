@@ -3,7 +3,7 @@ import React  from 'react';
 
 
 
-const Card = () => {
+export const Card = () => {
 
   // const [ubicacion, setUbicacion] = useState([]);
 return(
@@ -16,13 +16,10 @@ return(
     <p class="card-text">s/9.25 </p>
   </div>
   <div class="card-body">
-    <button type = "button" class="card-Btn-Ubicacion">Ubicación</button>
+    <a href="/" class="card-link">Ubicación</a>
     <button type = "button" class="card-Btn-Stock">Stock</button>
   </div>
 </div>
   </>
 )
 }
-
-  
-export {Card}

@@ -1,4 +1,4 @@
-import logo from '../assets/tottusLogo.png';
+// import logo from '../assets/tottusLogo.png';
 
 const Home = () => {
   return (
