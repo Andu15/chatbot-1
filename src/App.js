@@ -1,11 +1,10 @@
-import React from 'react';
-import Home from './pages/home.jsx';
+import './Sass/app.scss';
 
 const App = () => {
 
   return (
     <>
-      <Home />
+      
     </>
   );
 }
