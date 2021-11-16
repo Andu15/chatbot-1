@@ -4,6 +4,7 @@ import galleta from '../img/galleta.jpg'
 import paneton from '../img/paneton.jpg'
 import ubicacion from '../img/ubicacion.png'
 
+
 function LocationProduct() {
   return (
     <section className='contenedorTotal d-flex flex-column'>
