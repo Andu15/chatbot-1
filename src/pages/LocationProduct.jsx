@@ -7,10 +7,10 @@ const LocationProduct = () => {
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
-  console.log(decoded);
-  const pasilloProd = decoded.codigopasillo;
+  // console.log(decoded);
+  const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
-  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${decoded.codigopasillo}.jpg`;
+  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
 
   return (
     <section>
