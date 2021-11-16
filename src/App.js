@@ -9,13 +9,14 @@ import Products from './pages/Products.jsx';
 import LocationProduct from './pages/LocationProduct.jsx';
 import StockProduct from './pages/StockProduct.jsx';
 import Error404 from './pages/Error404';
+import StockAvalaible from './components/StockAvalaible.jsx';
 
 
 const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route  path="/" element={<Home />} />
           <Route  path="/products" element={<Products />} />
@@ -26,7 +27,8 @@ const App = () => {
             element={<Error404 />}
           />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+    <StockAvalaible />
     </>
   );
 }
