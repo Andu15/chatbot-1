@@ -5,7 +5,10 @@ import chocolate from '../img/chocolate.jpg';
 import galleta from '../img/galleta.jpg';
 import paneton from '../img/paneton.jpg';*/
 
-const LocationProduct = () => {
+const LocationProduct = ({apiGetCategori, apiGetProduct}) => {
+
+  // console.log(apiGetCategori, apiGetProduct)
+  // const {name} = apiGetCategori;
 
   let {search} = useLocation();
   let query = new URLSearchParams(search);
