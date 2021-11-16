@@ -1,10 +1,10 @@
-import './Sass/app.scss';
+import "./Sass/app.scss";
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-import Home from './pages/Home.jsx';
+import Home from './pages/Home';
 import Products from './pages/Products.jsx';
 import LocationProduct from './pages/LocationProduct.jsx';
 import StockProduct from './pages/StockProduct.jsx';
