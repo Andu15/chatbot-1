@@ -42,6 +42,7 @@ body{
   width: 100%;
 }
 
+/*vista products*/
 .containerProducts {
   padding: 10px 30px 40px;
 }
@@ -140,6 +141,64 @@ body{
   color: map-get($color,greenMedium);
 }
 
+/*vista location*/
+.contenedorTotal {
+  margin: 10px 30px 40px;
+} 
+.containerBack {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.containerBack i {
+  text-decoration: none;
+  border: 0;
+  color: map-get($color,greenMedium);
+  font-size: 25px;
+}
+.containerBack p {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: map-get($color,greenMedium);
+  font-size: map-get($font-size,m);
+}
+.containerImage img{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.containerTextProduct {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: map-get($color,colorWhite);
+}
+.containerTextProduct p {
+  border-radius: 30px;
+  text-align: center;
+  width: 250px;
+  padding: 5px;
+  background-color: map-get($color,greenLight);
+  color: map-get($color,greenMedium);
+}
+.titleCarousel {
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.titleCarousel h1 {
+  color: map-get($color,greenMedium);
+  font-size: map-get($font-size,m);
+}
+.titleCarousel hr {
+  color: map-get($color,greenMedium);
+  width: 30px;
+  height: 2px;
+  margin: 0px;
+}
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));
   background-image: url('../assets/img/background-stars.jpg');
