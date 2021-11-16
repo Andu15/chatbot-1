@@ -1,43 +1,56 @@
-import React from 'react'
-import chocolate from '../img/chocolate.jpg'
-import galleta from '../img/galleta.jpg'
-import paneton from '../img/paneton.jpg'
-import ubicacion from '../img/ubicacion.png'
+import { useLocation } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
+const LocationProduct = () => {
 
-function LocationProduct() {
+  let {search} = useLocation();
+  let query = new URLSearchParams(search);
+  const tokenPar = query.getAll("token")[0];
+  const decoded = jwt_decode(tokenPar);
+  console.log(decoded);
+  const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+
+  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
+
   return (
-    <section className='contenedorTotal d-flex flex-column'>
-      <div className='d-flex flex-row'>
-      <button  type="button" ><i class="fas fa-chevron-left"></i> </button>
-      <p>¿Quieres consultar otro producto?</p>
+    <section className='d-flex flex-column'>
+      <div className="containerBack">
+        <i className="fas fa-chevron-left"></i>
+        <p>¿Quieres consultar otro producto?</p>
       </div>
-      <div>
-        <img src={ubicacion} alt='' className='plano'/>
+      <div className="containerTextProduct">
+        <p>{decoded.codigocategoria}</p>
       </div>
+      <div className="containerImage">
+        <img src={url} alt=''/>
+      </div>
+      <div className="col titleCarousel">
+          <h1>Productos en este pasillo</h1>
+          <hr />
+        </div>
       <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src={chocolate} class="d-block w-100" alt="..." className='cardCarousel' />
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            {/* <img src={chocolate} className="d-block w-100" alt="..." className='cardCarousel' /> */}
           </div>
-          <div class="carousel-item">
-            <img src={galleta} class="d-block w-100" alt="..." className='cardCarousel' />
+          <div className="carousel-item">
+            {/* <img src={galleta} className="d-block w-100" alt="..." className='cardCarousel' /> */}
           </div>
-          <div class="carousel-item">
-            <img src={paneton} class="d-block w-100" alt="..." className='cardCarousel' />
+          <div className="carousel-item">
+            {/* <img src={paneton} className="d-block w-100" alt="..." className='cardCarousel' /> */}
           </div>
         </div>
         <button className="carousel-control-prev buttonCar" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span className="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next buttonCar" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+        <button className="carousel-control-next buttonCar" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
     </section>
   )
 }
 
-export default LocationProduct
+export default LocationProduct;
