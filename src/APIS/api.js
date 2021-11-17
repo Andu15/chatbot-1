@@ -36,6 +36,7 @@ export const apiGetCategori = async (
 };
 
 export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
+  console.log({prod, tienda, pagInicio, pagFinal});
   const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
     url: url,

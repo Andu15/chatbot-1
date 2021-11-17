@@ -11,7 +11,8 @@ const Products = ({ apiGetProduct }) => {
   const data = dataDura;
 
   const [product, setProduct] = useState([]);
-  const [searcher, setSearcher] = useState([])
+  const [searcher, setSearcher] = useState([]);
+  const [dataSearch, setDataSearch] = useState([]);
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
@@ -19,36 +20,38 @@ const Products = ({ apiGetProduct }) => {
   const { nombreproducto, codigotienda } = jwt_decode(tokenPar);
 
   const getProduct = async () => {
-
-    
-    const data = await apiGetProduct(nombreproducto, codigotienda, "1", "50");
+    const data = await apiGetProduct(searcher, codigotienda, "1", "");
     setProduct(data);
   };
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [searcher]);
+  // console.log(product)
 
   //function search//
-  const searchProducts = (dataSearch, buscarProductos) => {
-    // if (buscarProductos === "") {
-    //   return data;
-    // } 
-    if (buscarProductos) {
-      const arrayCategory = dataSearch.filter(
-        (ArrayProduct) =>
-          ArrayProduct.nombreproducto.toLowerCase() === buscarProductos.toLowerCase()
-      );
-      return arrayCategory;
-    };
-  }
   const handleSearch = (event) => {
-    setSearcher(event.target.value)
+    setSearcher(event.target.value);
+
   };
+  console.log(product);
+  console.log(dataDura);
 
+  let newData;
 
-  console.log(searcher);
+  if (!searcher.length >= 1) {
+    newData = data;
+    console.log("datadura", newData);
+  } else {
+    newData = product.filter((arr) => {
+      const dataInput = arr.name.toLowerCase();
+      const dataSearch = searcher.toLowerCase();
+      return dataInput.includes(dataSearch);
+    });
+    console.log("datareal", newData);
+  }
 
+  // console.log(searcher);
 
   return (
     <section className="">
@@ -76,7 +79,7 @@ const Products = ({ apiGetProduct }) => {
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        <Card data={data} />
+        <Card newData={newData} />
       </section>
     </section>
   );
