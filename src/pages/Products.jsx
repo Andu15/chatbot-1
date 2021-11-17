@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import smallLogo from "../assets/logoTottus-64x64.png";
 import { Card } from "../components/Card";
 import { Search } from "../components/Search";
-import { useLocation } from "react-router-dom";
-import jwt_decode from "jwt-decode";
 import { dataDura } from "../APIS/dataDura";
 
 const Products = ({ apiGetProduct }) => {
@@ -12,22 +10,17 @@ const Products = ({ apiGetProduct }) => {
 
   const [product, setProduct] = useState([]);
   const [searcher, setSearcher] = useState([]);
-  const [dataSearch, setDataSearch] = useState([]);
 
-  let { search } = useLocation();
-  let query = new URLSearchParams(search);
-  const tokenPar = query.getAll("token")[0];
-  const { nombreproducto, codigotienda } = jwt_decode(tokenPar);
+  const codigoTienda = localStorage.getItem('codigotienda')
 
   const getProduct = async () => {
-    const data = await apiGetProduct(searcher, codigotienda, "1", "");
+    const data = await apiGetProduct(searcher, codigoTienda, "1", "");
     setProduct(data);
   };
 
   useEffect(() => {
     getProduct();
   }, [searcher]);
-  // console.log(product)
 
   //function search//
   const handleSearch = (event) => {
@@ -35,22 +28,18 @@ const Products = ({ apiGetProduct }) => {
 
   };
 
-
+  //data filtrada
   let newData;
 
   if (!searcher.length >= 1) {
     newData = data;
-    console.log("datadura", newData);
   } else {
     newData = product.filter((arr) => {
       const dataInput = arr.name.toLowerCase();
       const dataSearch = searcher.toLowerCase();
       return dataInput.includes(dataSearch);
     });
-    console.log("datareal", newData);
   }
-
-  // console.log(searcher);
 
   return (
     <section className="">
