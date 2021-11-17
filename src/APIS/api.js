@@ -1,5 +1,6 @@
 import axios from "axios";
-console.log("ESTAS EN API.js ");
+import { datapasilloCategory } from "./category";
+import qs from "qs";
 
 //search for  category
 export const apiGetCategori = async (
@@ -13,10 +14,15 @@ export const apiGetCategori = async (
     url: url,
     method: "GET",
   });
-  console.log("dataAxioscategory",dataAxios );
 
   const resData = dataAxios.data.results;
-  console.log("respuestadatacategory", resData);
+
+  const filterpasillo = datapasilloCategory.filter(
+    (res) =>
+      res.codigo_tienda === Number(tienda) &&
+      res.categoria.includes(categoria.toUpperCase())
+  );
+  console.log("oasillos", filterpasillo);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -25,13 +31,16 @@ export const apiGetCategori = async (
       images: key.images[0],
       name: key.name,
       prices: key.prices.regularPrice,
-      marca:key.attributes.marca,
+      marca: key.attributes.marca,
       sku: key.sku,
+      codigojerarquia: filterpasillo[0].jerarquia,
+      codigopasillo: filterpasillo[0].pasillo,
+      codigopais: "PE",
+      nombreproducto: categoria, //tengo duda aqui si debe ser categroia o producto
+      codigotienda: tienda,
     };
     return data;
   });
-
-  console.log("marca",resultado);
   return resultado;
 };
 
@@ -42,10 +51,14 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
     method: "GET",
   });
 
-
-  //console.log("dataAxiosproduct",dataAxios );
   const resData = dataAxios.data.results;
-  //console.log( "respuestadaproduct",resData);
+
+  const filterpasillo = datapasilloCategory.filter(
+    (res) =>
+      res.codigo_tienda === Number(tienda) &&
+      res.categoria.includes(prod.toUpperCase())
+  );
+  //console.log("pasillos",filterpasillo);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -54,38 +67,48 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
       name: key.name,
       prices: key.prices.regularPrice,
       sku: key.sku,
-      marca:key.attributes.marca,
-      ean:key.attributes.ean,
+      marca: key.attributes.marca,
+      ean: key.attributes.ean,
       description: key.description,
+      codigojerarquia: filterpasillo[0].jerarquia,
+      codigopasillo: filterpasillo[0].pasillo,
+      codigopais: "PE",
+      nombreproducto: prod, //tengo duda aqui si debe ser categroia o producto
+      codigotienda: tienda,
     };
     return data;
   });
-
-   //console.log("marca",resultado)
-
+  console.log("data prouct en api", resultado);
   return resultado;
 };
 
+//traer data de un producto especifico
 
-
-//traer data de un producto especifico 
-
-export const apiGetProductSku = async (sku) => {
-  
+export const apiGetProductSku = async (sku, tienda) => {
   const url = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
-
   const dataAxios = await axios({
     url: url,
     method: "GET",
   });
 
-  console.log("dataAxios sku",dataAxios );
+  //console.log("dataAxios sku", dataAxios);
   const resData = dataAxios.data.results;
-
-
-  console.log( "respuesku",resData);
+  console.log("respuestaSku", resData);
 
   const resultado = resData.map((key) => {
+
+    //filtrra pasillos 
+    const filterpasillo = datapasilloCategory.filter(
+      (res) =>{
+       //console.log(res);
+        return (res.codigo_tienda === Number(tienda) &&
+        res.jerarquia=== key.attributes.hierarchy.slice(0,9))
+      }
+    );
+
+    console.log("filterpasillo", filterpasillo);
+    console.log("jeraquia",key.attributes.hierarchy.slice(0,9));
+    
     const data = {
       id: key.id,
       images: key.images[0],
@@ -93,31 +116,108 @@ export const apiGetProductSku = async (sku) => {
       prices: key.prices.regularPrice,
       sku: key.sku,
       description: key.description,
-      ean:key.attributes.ean
+      ean: key.attributes.ean,
+      codigojerarquia:(key.attributes.hierarchy.slice(0,8)),
+      codigopasillo: filterpasillo[0].pasillo,
+      codigopais: "PE",
+      nombreproducto:key.name, //tengo duda aqui si debe ser categroia o producto
+      codigotienda: tienda,
     };
     return data;
   });
 
-  console.log(resultado)
+  //console.log("datasku api",resultado);
 
   return resultado;
 };
 
+// obtener stocks en linea
+
+//obtener token
 
 
-export const getUbicacion = async (data) => {
-  
-  //const urlp = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
-  const url= "https://chatbot-spreadsheet-dot-tot-bi-corp-chatbot-dev.appspot.com/api/v1/Request/FindSpreadsheetTiendaUbicacionByJerarquia";
-  const dataAxios = await axios({
-    url: url,
-    method: "POST",
-    data: data,
-})
 
-console.log("ubicacion", dataAxios.data);
-  
+export const getToken = async () => {
+  const body = qs.stringify({
+    "client_id": "BCxjt1vjc8Rwtdv4XKLf93SP0pFzDdL8",
+    "client_secret": "7IvANCjwYITQJihG",
+    "grant_type": "client_credentials",
+  });
+
+  const url = "https://qa-apim-cloud.tottus.com/mrex-pctm/v2/authorization";
+
+  try {
+    const apiResponse = await axios({
+      method: "POST",
+      headers: {'content-type': 'application/x-www-form-urlencoded'},
+      url: url,
+      data:body,
+    });
+    const tokenData = apiResponse.data.access_token;
+    localStorage.setItem("token", tokenData);
+        //console.log("token",apiResponse.data.access_token);
+    return tokenData;
+
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    }
+  }
 };
+
+
+export const getStocks = async ( ) => {
+  const url = "https://qa-apim-cloud.tottus.com/mrex-pctm/v2/stock/store/109/sku/40973355";
+   const token = await getToken();
+   console.log("token",token);
+
+  const respuestaStocks= await  axios({
+      method: 'get',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization':`Bearer ${token}`,
+        "withCredentials": true,
+        "mode": 'no-cors',
+      //   "Access-Control-Allow-Origin": "*",
+      // //  "Access-Control-Allow-Headers": "Content-Type",
+      //  "Content-Type": "application/json",
+         'country': 'CL', 
+       'X-environment': 'QA', 
+      //   'Authorization': `Bearer ${token}`
+      },
+       url: url,
+  });
+
+  console.log("respuesta stocks",respuestaStocks);
+
+  return respuestaStocks ;
+}
+
+
+export const getstocksFetch =async () =>{
+  const token = await getToken();
+   console.log("token",token);
+
+  fetch('https://qa-apim-cloud.tottus.com/mrex-pctm/v2/stock/store/109/sku/40973355', {
+    method: 'GET',
+    headers: {
+        "Content-Type": "application/json",
+        'Authorization':`Bearer ${token}`,
+        "withCredentials": true,
+        "mode": 'no-cors',
+        'country': 'CL', 
+        'X-environment': 'QA', 
+           },
+    
+})
+.then(res => res.json())
+.then(res=> {
+      console.log(res);
+});
+} 
+
+
 
 
 
