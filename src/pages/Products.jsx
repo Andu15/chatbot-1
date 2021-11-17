@@ -11,7 +11,7 @@ const Products = () => {
       <section className="headerProducts">
         <div className="row">
           <div className="col">
-            <img src={smallLogo}/>
+            <img src={smallLogo} alt='logo'/>
           </div>
         </div>
         <div className="row">
