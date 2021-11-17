@@ -188,6 +188,12 @@ body{
   background-color: map-get($color,colorWhite);
   padding: 10px 30px 0px;
   margin-bottom: 20px;
+  @include breakpoint(tablet) {
+    padding: 10px 100px 0px;
+  }
+  @include breakpoint(laptop) {
+    padding: 10px 200px 0px;
+  }
   @include breakpoint(desktop) {
     padding: 10px 300px 0px;
   }
@@ -220,6 +226,12 @@ body{
 /* searchProducts */
 .searchProducts {
   margin: 0px 30px 30px;
+  @include breakpoint(tablet) {
+    margin: 0px 100px 30px;
+  }
+  @include breakpoint(laptop) {
+    margin: 0px 200px 30px;
+  }
   @include breakpoint(desktop) {
     margin: 0px 300px 30px;
   }
@@ -240,6 +252,12 @@ body{
 .titleProducts {
   color: map-get($color,greyLight);
   margin-left: 30px;
+  @include breakpoint(tablet) {
+    margin-left: 100px;
+  }
+  @include breakpoint(laptop) {
+    margin-left: 200px;
+  }
   @include breakpoint(desktop) {
     margin-left: 300px;
   }
@@ -280,17 +298,19 @@ body{
   grid-row-gap: 15px;
   /*flex-wrap: wrap;*/
   @include breakpoint(phablet) {
-    margin: 0px 300px;
+    margin: 0px 100px;
     display: grid;
     justify-items: center;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
   }
   @include breakpoint(laptop) {
+    margin: 0px 200px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   @include breakpoint(desktop) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 0px 300px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 .myCard h5 {
