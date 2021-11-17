@@ -34,8 +34,7 @@ const Products = ({ apiGetProduct }) => {
     setSearcher(event.target.value);
 
   };
-  console.log(product);
-  console.log(dataDura);
+
 
   let newData;
 
