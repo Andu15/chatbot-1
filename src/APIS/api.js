@@ -1,6 +1,6 @@
 import axios from "axios";
 
-//search for  category
+// search for  category
 export const apiGetCategori = async (
   categoria,
   tienda,
@@ -12,6 +12,7 @@ export const apiGetCategori = async (
     url: url,
     method: "GET",
   });
+
   console.log("dataAxioscategory",dataAxios );
 
   const resData = dataAxios.data.results;
@@ -34,7 +35,9 @@ export const apiGetCategori = async (
   return resultado;
 };
 
+// search for product
 export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
+  console.log({prod, tienda, pagInicio, pagFinal});
   const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
     url: url,
@@ -65,10 +68,7 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
   return resultado;
 };
 
-
-
-//traer data de un producto especifico 
-
+// traer data de un producto especifico 
 export const apiGetProductSku = async (sku) => {
   
   const url = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
@@ -102,8 +102,7 @@ export const apiGetProductSku = async (sku) => {
   return resultado;
 };
 
-
-
+// traer la ubicacion
 export const getUbicacion = async (data) => {
   
   //const urlp = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
@@ -121,8 +120,8 @@ console.log("ubicacion", dataAxios.data);
 
 
 
-
-
+//  console.log("dataAxiosproduct",dataAxios );
+//  console.log( "respuestadaproduct",resData);
 
 
 
