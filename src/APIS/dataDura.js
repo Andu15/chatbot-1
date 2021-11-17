@@ -8,7 +8,6 @@ CAFE:J01010702-3B,
 LECHE:J01010704-3B,
 */
 
-
 export const dataDura = [
    
     {

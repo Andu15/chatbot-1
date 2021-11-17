@@ -1,7 +1,6 @@
 import BtnReturn from '../components/BtnReturn.jsx';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import jwt_decode from "jwt-decode";
 
 const LocationProduct = ({ apiGetProduct }) => {
@@ -13,8 +12,8 @@ const LocationProduct = ({ apiGetProduct }) => {
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
   // console.log(decoded);
-  localStorage.setItem('nombretienda', decoded.nombretienda);
-  localStorage.setItem('codigotienda', decoded.codigotienda);
+  sessionStorage.setItem('nombretienda', decoded.nombretienda);
+  sessionStorage.setItem('codigotienda', decoded.codigotienda);
 
   const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
