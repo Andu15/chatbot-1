@@ -9,7 +9,8 @@ const StockProduct = ({ apiGetProduct }) => {
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
   console.log(decoded);
-  console.log(apiGetProduct);
+  apiGetProduct(decoded.nombreproducto, decoded.codigotienda, "1", "20")
+  .then(e=>console.log(e))
 
   return (
     <section>
@@ -18,4 +19,4 @@ const StockProduct = ({ apiGetProduct }) => {
   )
 }
 
-export default StockProduct
+export default StockProduct;
