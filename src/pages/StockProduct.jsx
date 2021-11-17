@@ -4,34 +4,32 @@ import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import StockAvalaible from '../components/StockAvalaible.jsx';
 
-const StockProduct = ({ apiGetProduct }) => {
+const StockProduct = ({ apiGetProductSku }) => {
 
-  const [dataProducts, setDataProducts] = useState([]);
+  const [uniqueProduct, setUniqueProduct] = useState([]);
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
-  console.log(decoded);
+
   localStorage.setItem('nombretienda', decoded.nombretienda);
   localStorage.setItem('codigotienda', decoded.codigotienda);
 
-  // const getProduct = async () => {
-  //   const data = await apiGetProduct(decoded.nombreproducto, decoded.codigotienda, "1", "20")
-  //   setDataProducts(data);
-  // }
+  const queryProduct = async() =>{
+    const info = await apiGetProductSku(decoded.codigosku);
+    setUniqueProduct(info)
+  };
 
-  // useEffect(() => {
-  //   getProduct();
-  // }, []);
-
-  // console.log(dataProducts)
-
+  useEffect(()=>{
+    queryProduct();
+  }, []);
 
   return (
     <section>
       <BtnReturn />
-      {/* <StockAvalaible dataProducts={dataProducts} setDataProducts={setDataProducts}/> */}
+      {/* <StockAvalaible uniqueProduct={uniqueProduct}/> */}
+      { !!uniqueProduct.length && <StockAvalaible uniqueProduct={uniqueProduct}/>}
     </section>
   )
 }

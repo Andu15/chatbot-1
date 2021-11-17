@@ -13,10 +13,7 @@ export const apiGetCategori = async (
     method: "GET",
   });
 
-  // console.log("dataAxioscategory",dataAxios );
-
   const resData = dataAxios.data.results;
-  // console.log("respuestadatacategory", resData);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -31,23 +28,18 @@ export const apiGetCategori = async (
     return data;
   });
 
-  // console.log("marca",resultado);
   return resultado;
 };
 
 // search for product
 export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
-  // console.log({prod, tienda, pagInicio, pagFinal});
   const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
     url: url,
     method: "GET",
   });
 
-
-  //console.log("dataAxiosproduct",dataAxios );
   const resData = dataAxios.data.results;
-  //console.log( "respuestadaproduct",resData);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -63,8 +55,6 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
     return data;
   });
 
-   //console.log("marca",resultado)
-
   return resultado;
 };
 
@@ -78,11 +68,7 @@ export const apiGetProductSku = async (sku) => {
     method: "GET",
   });
 
-  console.log("dataAxios sku",dataAxios );
   const resData = dataAxios.data.results;
-
-
-  console.log( "respuesku",resData);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -97,8 +83,6 @@ export const apiGetProductSku = async (sku) => {
     return data;
   });
 
-  console.log(resultado)
-
   return resultado;
 };
 
@@ -112,16 +96,9 @@ export const getUbicacion = async (data) => {
     method: "POST",
     data: data,
 })
-
-console.log("ubicacion", dataAxios.data);
   
 };
 
-
-
-
-//  console.log("dataAxiosproduct",dataAxios );
-//  console.log( "respuestadaproduct",resData);
 
 
 
