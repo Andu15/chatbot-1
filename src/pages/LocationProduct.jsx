@@ -29,7 +29,7 @@ const LocationProduct = ({ apiGetProduct }) => {
 
   return (
     <section className='d-flex flex-column'>
-      < BtnReturn />
+      <BtnReturn />
       <div className="containerTextProduct">
         <p>{decoded.codigocategoria}</p>
       </div>

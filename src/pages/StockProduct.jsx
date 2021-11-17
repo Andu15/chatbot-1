@@ -13,7 +13,7 @@ const StockProduct = ({ apiGetProduct }) => {
 
   return (
     <section>
-      < BtnReturn />
+      <BtnReturn />
     </section>
   )
 }
