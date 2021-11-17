@@ -6,12 +6,21 @@ const Home = () => {
     <section class="container">
       <div class="row">
         <div class="d-grid gap-1 col-3 mx-auto">
+<<<<<<< HEAD
+          <img src={logo} alt = "logo" />
+=======
           <img src={logo} alt="logo tottus"/>
+>>>>>>> 7080353d91289e4c7ee7a2d06edbf6137a0de170
         </div>
       </div>
       <div class="row">
         <div class="d-grid gap-1 col-6 mx-auto">
+<<<<<<< HEAD
+          <img src={supermarket} alt= 'supermarket'/>
+
+=======
           <img src={supermarket} alt="imagen super market"/>
+>>>>>>> 7080353d91289e4c7ee7a2d06edbf6137a0de170
         </div>
       </div>
       <div className="row">
