@@ -25,7 +25,6 @@ const Products = ({ apiGetProduct }) => {
   //function search//
   const handleSearch = (event) => {
     setSearcher(event.target.value);
-
   };
 
   //data filtrada
