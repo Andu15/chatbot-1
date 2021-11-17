@@ -1,5 +1,4 @@
 import axios from "axios";
-// console.log("ESTAS EN API.js ");
 
 //search for  category 
 export const  apiGetCategori = async(categoria, tienda, pagInicio, pagFinal) => {
@@ -22,7 +21,7 @@ export const  apiGetCategori = async(categoria, tienda, pagInicio, pagFinal) => 
       }
     return data ;
   })
-  return   resultado;
+  return resultado;
 };
 
 // search for product

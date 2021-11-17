@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
-const LocationProduct = () => {
+const LocationProduct = () => { 
 
   let {search} = useLocation();
   let query = new URLSearchParams(search);
