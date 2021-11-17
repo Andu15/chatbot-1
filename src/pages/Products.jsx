@@ -1,17 +1,52 @@
 //import logo from '../assets/tottusLogo.png';
-import smallLogo from '../assets/logoTottus-64x64.png';
-import {Card} from '../components/Card';
-import { Search } from '../components/Search';
+import { useEffect, useState } from "react";
+import smallLogo from "../assets/logoTottus-64x64.png";
+import { Card } from "../components/Card";
+import { Search } from "../components/Search";
+import { dataDura } from "../APIS/dataDura";
 
+const Products = ({ apiGetProduct }) => {
+  const data = dataDura;
 
-const Products = () => {
+  const [product, setProduct] = useState([]);
+  const [searcher, setSearcher] = useState([]);
+
+  const codigoTienda = localStorage.getItem('codigotienda')
+
+  const getProduct = async () => {
+    const data = await apiGetProduct(searcher, codigoTienda, "1", "");
+    setProduct(data);
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, [searcher]);
+
+  //function search//
+  const handleSearch = (event) => {
+    setSearcher(event.target.value);
+
+  };
+
+  //data filtrada
+  let newData;
+
+  if (!searcher.length >= 1) {
+    newData = data;
+  } else {
+    newData = product.filter((arr) => {
+      const dataInput = arr.name.toLowerCase();
+      const dataSearch = searcher.toLowerCase();
+      return dataInput.includes(dataSearch);
+    });
+  }
 
   return (
     <section className="">
       <section className="headerProducts">
         <div className="row">
           <div className="col">
-            <img src={smallLogo}/>
+            <img src={smallLogo} alt="smallLogo" />
           </div>
         </div>
         <div className="row">
@@ -27,17 +62,16 @@ const Products = () => {
           </div>
         </div>
       </section>
-        <Search/>
+      <Search onChange={handleSearch} product={product} />
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        <Card/>
+        <Card newData={newData} />
       </section>
-      
     </section>
-  )
-}
+  );
+};
 
 
 export default Products;

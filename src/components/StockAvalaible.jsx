@@ -1,33 +1,36 @@
 
-const StockAvalaible = ({nameProduct, imgProduct, priceProduct, descriptionProduct, stockProduct}) => {
+const StockAvalaible = ({uniqueProduct}) => {
+
   return (
-    <section class="container">
-      <div class="row">
-        <div class="col">
-          <img src={imgProduct} alt={nameProduct}/>
+    <>
+      <section className="container">
+        <div className="row">
+          <div className="col">
+            <img src={uniqueProduct[0].images} alt={uniqueProduct[0].name}/>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h2>{nameProduct}</h2>
+        <div className="row">
+          <div className="col">
+            <h2>{uniqueProduct[0].name}</h2>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h2>{priceProduct}</h2>
+        <div className="row">
+          <div className="col">
+            <h2>S/ {uniqueProduct[0].prices}</h2>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <p>{descriptionProduct}</p>
+        <div className="row">
+          <div className="col">
+            <p>{uniqueProduct[0].description}</p>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-success" role="alert">{stockProduct} UN</div>
+        <div className="row">
+          <div className="col">
+            <div className="alert alert-success" role="alert">{"aun no tenemos stock"} UN</div>
+          </div>
         </div>
-      </div>
-    </section>
+  </section>
+    </>
   )
 }
 
