@@ -265,8 +265,9 @@ body{
   margin: 0px 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  flex-wrap: wrap;
-  @include breakpoint(desktop) {
+  grid-column-gap: 30px;
+  /* flex-wrap: wrap; */
+  @include breakpoint(phablet) {
     margin: 0px 300px;
     display: grid;
     justify-items: center;
