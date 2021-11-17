@@ -1,18 +1,15 @@
-const btnReturn = () => {
+import { Link } from "react-router-dom";
 
-  const handleRoute = (e) => {
-    console.log(e.target);
-  }
+const BtnReturn = () => {
 
   return (
-    <section>
-      <div class="row">
-        <div class="col">
-          <button type="button" class="btn btn-link" onClick={handleRoute}>¿Quieres consultar otro producto?</button>
-        </div>
-      </div>
+    <section className="containerBack">
+        <Link to="/experienciatienda">
+          <i className="fas fa-chevron-left"></i>
+        </Link>
+        <p>¿Quieres consultar otro producto?</p>
     </section>
   )
 }
 
-export default btnReturn;
+export default BtnReturn;
