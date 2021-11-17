@@ -13,15 +13,17 @@ const StockProduct = ({ apiGetProduct }) => {
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
   console.log(decoded);
+  localStorage.setItem('nombretienda', decoded.nombretienda);
+  localStorage.setItem('codigotienda', decoded.codigotienda);
 
-  const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, decoded.codigotienda, "1", "20")
-    setDataProducts(data);
-  }
+  // const getProduct = async () => {
+  //   const data = await apiGetProduct(decoded.nombreproducto, decoded.codigotienda, "1", "20")
+  //   setDataProducts(data);
+  // }
 
-  useEffect(() => {
-    getProduct();
-  }, []);
+  // useEffect(() => {
+  //   getProduct();
+  // }, []);
 
   // console.log(dataProducts)
 
@@ -29,7 +31,7 @@ const StockProduct = ({ apiGetProduct }) => {
   return (
     <section>
       <BtnReturn />
-      <StockAvalaible dataProducts={dataProducts} setDataProducts={setDataProducts}/>
+      {/* <StockAvalaible dataProducts={dataProducts} setDataProducts={setDataProducts}/> */}
     </section>
   )
 }
