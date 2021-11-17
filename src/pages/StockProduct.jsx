@@ -18,4 +18,4 @@ const StockProduct = ({ apiGetProduct }) => {
   )
 }
 
-export default StockProduct
+export default StockProduct;
