@@ -1,6 +1,7 @@
 import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+
 import jwt_decode from "jwt-decode";
 /*import ubicacion from '../img/ubicacion.png';
 import chocolate from '../img/chocolate.jpg';
