@@ -15,7 +15,7 @@ const Error404 = () => {
         <p>Lo sentimos, este producto no se encuentra disponible.</p>
       </div>
       <button className="btnHome p-2">
-        <span><a href="/">Volver al home</a> </span>
+        <span><a href="/experienciatienda">Volver al home</a> </span>
       </button>
     </section>
   )

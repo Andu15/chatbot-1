@@ -14,14 +14,14 @@ const Home = () => {
           <img src={supermarket} alt="imagen super market"/>
         </div>
       </div>
-      <div class="row">
-        <div class="d-grid gap-1 col-10 mx-auto">
+      <div className="row">
+        <div className="d-grid gap-1 col-10 mx-auto">
           <p>Sin mucho esfuerzo conoce la ubicacion o stock de un producto dentro de tu tienda Tottus más cercana.</p>
         </div>
       </div>
-      <div class="row">
-        <div class="d-grid gap-2 col-5 mx-auto">
-          <button class="btn btn-success" type="button">Button</button>
+      <div className="row">
+        <div className="d-grid gap-2 col-5 mx-auto">
+          <button className="btn btn-success" type="button">Button</button>
         </div>
       </div>
     </section>

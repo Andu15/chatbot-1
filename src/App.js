@@ -2,9 +2,9 @@ import './Sass/app.scss';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  useParams
 } from "react-router-dom";
-import Home from './pages/Home.jsx';
 import Products from './pages/Products.jsx';
 import LocationProduct from './pages/LocationProduct.jsx';
 import StockProduct from './pages/StockProduct.jsx';
@@ -17,14 +17,10 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route  path="/" element={<Home />} />
-          <Route  path="/products" element={<Products />} />
-          <Route  path="/location" element={<LocationProduct />} />
-          <Route  path="/stock" element={<StockProduct />} />
-          <Route
-            path="*"
-            element={<Error404 />}
-          />
+          <Route path="/locationproduct" element={<LocationProduct />}/>
+          <Route path="/stockproduct" element={<StockProduct />} />
+          <Route path="/experienciatienda" element={<Products />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </>
