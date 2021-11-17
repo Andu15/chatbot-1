@@ -153,6 +153,14 @@ body{
   border-radius: 30px;
   height: 30px;
   width: 30px;
+  @include breakpoint(tablet) {
+    margin-top: 11%;
+    height: 45px;
+    width: 45px;
+  }
+  @include breakpoint(laptop) {
+    margin-top: 11%;
+  }
   @include breakpoint(desktop) {
     margin-top: 11%;
     height: 50px;
@@ -161,6 +169,9 @@ body{
 }
 .contentCarrusel span {
   width: 15px;
+  @include breakpoint(tablet) {
+    width: 25px;
+  }
   @include breakpoint(desktop) {
     width: 25px;
   }
@@ -265,13 +276,21 @@ body{
   margin: 0px 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  flex-wrap: wrap;
-  @include breakpoint(desktop) {
+  grid-column-gap: 30px;
+  grid-row-gap: 15px;
+  /*flex-wrap: wrap;*/
+  @include breakpoint(phablet) {
     margin: 0px 300px;
     display: grid;
     justify-items: center;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include breakpoint(laptop) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @include breakpoint(desktop) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 .myCard h5 {
@@ -391,6 +410,8 @@ body{
 .containerTextProduct {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   background-color: map-get($color,colorWhite);
   @include breakpoint(tablet) {

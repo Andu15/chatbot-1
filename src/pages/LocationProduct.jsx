@@ -33,6 +33,7 @@ const LocationProduct = ({ apiGetProduct }) => {
       <BtnReturn />
       <div className="containerTextProduct">
         <p>{decoded.codigocategoria}</p>
+        <p>Pasillo: {pasilloProd}</p>
       </div>
       <div className="containerImage">
         <img src={url} alt='' />
