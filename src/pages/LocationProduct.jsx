@@ -1,3 +1,4 @@
+import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -28,10 +29,7 @@ const LocationProduct = ({ apiGetProduct }) => {
 
   return (
     <section className='d-flex flex-column'>
-      <div className="containerBack">
-        <i className="fas fa-chevron-left"></i>
-        <p>¿Quieres consultar otro producto?</p>
-      </div>
+      < BtnReturn />
       <div className="containerTextProduct">
         <p>{decoded.codigocategoria}</p>
       </div>
