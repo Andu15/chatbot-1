@@ -3,15 +3,15 @@ import supermarket from '../assets/supermarket.png';
 
 const Home = () => {
   return (
-    <section className="container">
-      <div className="row">
-        <div className="d-grid gap-1 col-3 mx-auto">
-          <img src={logo}/>
+    <section class="container">
+      <div class="row">
+        <div class="d-grid gap-1 col-3 mx-auto">
+          <img src={logo} alt="logo tottus" />
         </div>
       </div>
-      <div className="row">
-        <div className="d-grid gap-1 col-6 mx-auto">
-          <img src={supermarket}/>
+      <div class="row">
+        <div class="d-grid gap-1 col-6 mx-auto">
+          <img src={supermarket} alt="imagen super market" />
         </div>
       </div>
       <div className="row">
