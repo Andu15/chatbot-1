@@ -12,6 +12,9 @@ const LocationProduct = ({ apiGetProduct }) => {
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
+  // console.log(decoded);
+  localStorage.setItem('nombretienda', decoded.nombretienda);
+  localStorage.setItem('codigotienda', decoded.codigotienda);
 
   const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
@@ -20,7 +23,6 @@ const LocationProduct = ({ apiGetProduct }) => {
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
     setDataProducts(data)
-    console.log(data)
   }
 
   useEffect(() => {

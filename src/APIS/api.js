@@ -13,10 +13,10 @@ export const apiGetCategori = async (
     method: "GET",
   });
 
-  console.log("dataAxioscategory",dataAxios );
+  // console.log("dataAxioscategory",dataAxios );
 
   const resData = dataAxios.data.results;
-  console.log("respuestadatacategory", resData);
+  // console.log("respuestadatacategory", resData);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -31,13 +31,13 @@ export const apiGetCategori = async (
     return data;
   });
 
-  console.log("marca",resultado);
+  // console.log("marca",resultado);
   return resultado;
 };
 
 // search for product
 export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
-  console.log({prod, tienda, pagInicio, pagFinal});
+  // console.log({prod, tienda, pagInicio, pagFinal});
   const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
     url: url,
