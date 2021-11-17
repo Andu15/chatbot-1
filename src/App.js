@@ -10,7 +10,6 @@ import StockProduct from './pages/StockProduct.jsx';
 import Error404 from './pages/Error404';
 import {apiGetCategori, apiGetProduct} from './APIS/api';
 
-
 const App = () => {
 
   return (
