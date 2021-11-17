@@ -1,46 +1,61 @@
 //import logo from '../assets/tottusLogo.png';
-import {useEffect, useState} from "react"
-import smallLogo from '../assets/logoTottus-64x64.png';
-import {Card} from '../components/Card';
-import { Search } from '../components/Search';
+import { useEffect, useState } from "react";
+import smallLogo from "../assets/logoTottus-64x64.png";
+import { Card } from "../components/Card";
+import { Search } from "../components/Search";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { dataDura } from "../APIS/dataDura";
 
+const Products = ({ apiGetProduct }) => {
+  const data = dataDura;
 
-const Products = ({apiGetProduct}) => {
+  const [product, setProduct] = useState([]);
+  const [searcher, setSearcher] = useState([])
 
-const [product, setProduct] = useState([])
-
-  let {search} = useLocation();
+  let { search } = useLocation();
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
-  const {nombreproducto, codigotienda} = jwt_decode(tokenPar);
+  const { nombreproducto, codigotienda } = jwt_decode(tokenPar);
+
   const getProduct = async () => {
 
-    const data = await apiGetProduct(nombreproducto, codigotienda, "1","5")
-    setProduct(data)
+    
+    const data = await apiGetProduct(nombreproducto, codigotienda, "1", "50");
+    setProduct(data);
+  };
 
-  }
-  
-  // const {name} = apiGetCategori;
-  useEffect( ()=> {
+  useEffect(() => {
     getProduct();
+  }, []);
 
-  }, [ ])
-
-
-  const handleSearch = (event) => {
-console.log(event.target)
+  //function search//
+  const searchProducts = (dataSearch, buscarProductos) => {
+    // if (buscarProductos === "") {
+    //   return data;
+    // } 
+    if (buscarProductos) {
+      const arrayCategory = dataSearch.filter(
+        (ArrayProduct) =>
+          ArrayProduct.nombreproducto.toLowerCase() === buscarProductos.toLowerCase()
+      );
+      return arrayCategory;
+    };
   }
+  const handleSearch = (event) => {
+    setSearcher(event.target.value)
+  };
 
-  console.log(product)
+
+  console.log(searcher);
+
 
   return (
     <section className="">
       <section className="headerProducts">
         <div className="row">
           <div className="col">
-            <img src={smallLogo} alt = "smallLogo"/>
+            <img src={smallLogo} alt="smallLogo" />
           </div>
         </div>
         <div className="row">
@@ -56,16 +71,15 @@ console.log(event.target)
           </div>
         </div>
       </section>
-        <Search onChange={handleSearch}/>
+      <Search onChange={handleSearch} product={product} />
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        <Card product={product}/>
+        <Card data={data} />
       </section>
-      
     </section>
-  )
-}
+  );
+};
 
 export default Products;

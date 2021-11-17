@@ -1,8 +1,8 @@
 
-export const Card = ({ product }) => {
-  console.log(product);
+export const Card = ({ data }) => {
+  console.log(data);
 
-  const result = product && product.map((elem) => {
+  const result = data && data.map((elem) => {
     return (
       <div key={elem.sku} className="myCard">
         <img src={elem.images} className="card-img-top" alt={elem.name} />
@@ -12,7 +12,7 @@ export const Card = ({ product }) => {
         </div>
         <div className="cardButtons">
           <button type="button" className="card-Btn-Stock">
-            Ubicacion
+            Ubicación
           </button>
           <button type="button" className="card-Btn-Stock">
             Stock

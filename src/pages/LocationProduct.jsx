@@ -16,7 +16,7 @@ const LocationProduct = ({ apiGetProduct }) => {
   const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
 
   const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '105', '1', '3');
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
     setDataProducts(data)
     console.log(data)
   }
