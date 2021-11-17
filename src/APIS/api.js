@@ -89,7 +89,6 @@ export const apiGetProductSku = async (sku) => {
 // traer la ubicacion
 export const getUbicacion = async (data) => {
   
-  //const urlp = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
   const url= "https://chatbot-spreadsheet-dot-tot-bi-corp-chatbot-dev.appspot.com/api/v1/Request/FindSpreadsheetTiendaUbicacionByJerarquia";
   const dataAxios = await axios({
     url: url,

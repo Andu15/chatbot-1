@@ -3,6 +3,7 @@ import BtnReturn from '../components/BtnReturn';
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import StockAvalaible from '../components/StockAvalaible.jsx';
+import StockNotAvalaible from '../components/StockNotAvalaible.jsx';
 
 const StockProduct = ({ apiGetProductSku }) => {
 
@@ -28,8 +29,9 @@ const StockProduct = ({ apiGetProductSku }) => {
   return (
     <section>
       <BtnReturn />
-      {/* <StockAvalaible uniqueProduct={uniqueProduct}/> */}
-      { !!uniqueProduct.length && <StockAvalaible uniqueProduct={uniqueProduct}/>}
+      { 
+        !!uniqueProduct.length ? <StockAvalaible uniqueProduct={uniqueProduct}/> : <StockNotAvalaible />
+      }
     </section>
   )
 }
