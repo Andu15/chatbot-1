@@ -77,7 +77,6 @@ body{
   background-color: black;
 }
 .carousel {
-  //position: absolute;
   bottom: 0;
   width: 100%;
 }
@@ -106,12 +105,10 @@ body{
   color: map-get($color,greenMedium);
   margin-right: 5px;
 }
-
 /* searchProducts */
 .searchProducts {
   margin: 0px 30px 30px;
 }
-
 .mySearchProducts {
   text-decoration: none;
   border-radius: 10px;
@@ -129,7 +126,6 @@ body{
 .titleProducts h2 {
   font-size: map-get($font-size,ml);
 }
-
 /*containerProduts*/
 .myCard {
   width: 150px;
@@ -140,7 +136,6 @@ body{
   align-items: center;
   padding-bottom: 10px;
   margin-top: 15px;
-  //margin: 20px 20px 20px 0px;
 }
 .myCard img {
   width: 55%;
@@ -178,7 +173,6 @@ body{
   background-color: map-get($color,colorWhite);
   color: map-get($color,greenMedium);
 }
-
 /*vista location*/
 .contenedorTotal {
   margin: 10px 30px 40px;
@@ -237,6 +231,9 @@ body{
   height: 2px;
   margin: 0px;
 }
+
+
+
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));
   background-image: url('../assets/img/background-stars.jpg');
