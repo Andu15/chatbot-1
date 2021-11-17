@@ -47,31 +47,45 @@ const LocationProduct = ({ apiGetProduct }) => {
         <h1>Productos en este pasillo</h1>
         <hr />
       </div>
-      <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
-        <div className="carousel-inner" >
-          {
-            dataProducts && dataProducts.map((item, index) => 
-              index === 0 ? (<div className="carousel-item active" key={index}>
-                <img src={item.images} className="d-block w-50" alt={item.name} />
-                <p>{item.description}</p>
-                <p>{item.prices}</p>
-              </div>) : (<div className="carousel-item " key={index}><img src={item.images} className="d-block w-50" alt={item.name} />
-                <p>{item.description}</p>
-                <p>{item.prices}</p>
-              </div>)
-            
-            )}
-        </div>
+      <section className="carouselMainContainerl">
+        <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
+          <div className="carousel-inner" >
+            {
+              dataProducts && dataProducts.map((item, index) => 
+                index === 0 ? (
+                <div className="carousel-item active" key={index}>
+                  <section className="containerImageText">
+                    <img src={item.images} className="" alt={item.name} />
+                    <div className="textCarousel">
+                      <h5>{item.name}</h5>
+                      <p>s/{item.prices} UN</p>
+                    </div>
+                  </section>
+                </div>
+                ) : (
+                <div className="carousel-item " key={index}>
+                  <section className="containerImageText">
+                    <img src={item.images} className="" alt={item.name} />
+                    <div className="textCarousel">
+                      <h5>{item.name}</h5>
+                      <p>s/{item.prices} UN</p>
+                    </div>
+                  </section>
+                </div>
+                )
+              
+              )}
+          </div>
 
-        <button className="carousel-control-prev buttonCar" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next buttonCar" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
+          <button className="carousel-control-prev " type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button className="carousel-control-next " type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+      
     </section>
   )
 }
