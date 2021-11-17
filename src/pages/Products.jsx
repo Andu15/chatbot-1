@@ -1,10 +1,39 @@
 //import logo from '../assets/tottusLogo.png';
+import {useEffect, useState} from "react"
 import smallLogo from '../assets/logoTottus-64x64.png';
 import {Card} from '../components/Card';
 import { Search } from '../components/Search';
+import { useLocation } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 
-const Products = () => {
+const Products = ({apiGetProduct}) => {
+
+const [product, setProduct] = useState([])
+
+  let {search} = useLocation();
+  let query = new URLSearchParams(search);
+  const tokenPar = query.getAll("token")[0];
+  const {nombreproducto, codigotienda} = jwt_decode(tokenPar);
+  const getProduct = async () => {
+
+    const data = await apiGetProduct(nombreproducto, codigotienda, "1","5")
+    setProduct(data)
+
+  }
+  
+  // const {name} = apiGetCategori;
+  useEffect( ()=> {
+    getProduct();
+
+  }, [ ])
+
+
+  const handleSearch = (event) => {
+console.log(event.target)
+  }
+
+  console.log(product)
 
   return (
     <section className="">
@@ -27,12 +56,12 @@ const Products = () => {
           </div>
         </div>
       </section>
-        <Search/>
+        <Search onChange={handleSearch}/>
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        <Card/>
+        <Card product={product}/>
       </section>
       
     </section>

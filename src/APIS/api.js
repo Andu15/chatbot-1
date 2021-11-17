@@ -1,5 +1,5 @@
 import axios from "axios";
-console.log("ESTAS EN API.js ");
+// console.log("ESTAS EN API.js ");
 
 //search for  category 
 export const  apiGetCategori= async (categoria,tienda ,pagInicio,pagFinal) => {
@@ -11,7 +11,7 @@ export const  apiGetCategori= async (categoria,tienda ,pagInicio,pagFinal) => {
   //console.log("dataAxioscategory",dataAxios );
 
   const resData= dataAxios.data.results;
-  console.log( "respuestadatacategory",resData);
+  // console.log( "respuestadatacategory",resData);
 
   const resultado = resData.map( key => {
       const data = {
@@ -26,7 +26,7 @@ export const  apiGetCategori= async (categoria,tienda ,pagInicio,pagFinal) => {
   }
     )
 
-    console.log(resultado);
+    // console.log(resultado);
 
   return   resultado;
 };
@@ -40,10 +40,10 @@ export const  apiGetProduct= async (prod,tienda ,pagInicio,pagFinal) => {
      method: "GET",
  });
 
- console.log("dataAxiosproduct",dataAxios );
+//  console.log("dataAxiosproduct",dataAxios );
 
  const resData= dataAxios.data.results;
- console.log( "respuestadaproduct",resData);
+//  console.log( "respuestadaproduct",resData);
 
 
  const resultado = resData.map( key => {
@@ -59,7 +59,7 @@ export const  apiGetProduct= async (prod,tienda ,pagInicio,pagFinal) => {
  }
    )
 
- console.log(resultado)
+//  console.log(resultado)
 
 
  return   resultado;

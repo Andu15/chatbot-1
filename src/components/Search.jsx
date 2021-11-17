@@ -1,6 +1,12 @@
 import React from 'react'
 
-export const Search = () => {
+export const Search = ({onChange}) => {
+    
+ console.log(onChange)
+    // const handleSearch = (e) => {
+      
+
+    // }
     return (
         <section className="searchProducts">
             <div className="input-group">
