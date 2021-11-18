@@ -41,7 +41,7 @@ const Products = ({ apiGetProduct }) => {
       return dataInput.includes(dataSearch);
     });
   };
-
+  
   return (
     <section className="">
       <section className="headerProducts">

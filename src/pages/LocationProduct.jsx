@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 
 const LocationProduct = ({ apiGetProduct }) => {
   const [dataProducts, setDataProducts] = useState([]);
+  console.log(dataProducts);
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
@@ -30,7 +31,7 @@ const LocationProduct = ({ apiGetProduct }) => {
   console.log(url)
 
   const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '8');
     setDataProducts(data);
   }
 
@@ -38,8 +39,8 @@ const LocationProduct = ({ apiGetProduct }) => {
     getProduct();
 
   }, []);
-
-  return (
+  
+   return (
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">
