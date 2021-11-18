@@ -6,7 +6,6 @@ import { dataDura } from "../APIS/dataDura";
 
 const Products = ({ apiGetProduct }) => {
   const data = dataDura;
-
   const [product, setProduct] = useState([]);
   const [searcher, setSearcher] = useState([]);
 
@@ -20,7 +19,11 @@ const Products = ({ apiGetProduct }) => {
   };
 
   useEffect(() => {
-    getProduct();
+    const timer = setTimeout(() => {
+      getProduct();
+      
+    }, 2500);
+    return () => clearTimeout(timer);
   }, [searcher]);
 
   //function search//
@@ -72,7 +75,7 @@ const Products = ({ apiGetProduct }) => {
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        {newData ? <Card newData={newData} /> : (<div class="spinner-border text-success" role="status">
+        {newData ? <Card newData={newData} /> : (<div className="spinner-border text-success" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>)}
       </section>
