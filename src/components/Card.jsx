@@ -1,4 +1,25 @@
+import { useNavigate } from "react-router-dom";
+import jwt from "jsonwebtoken";
+
 export const Card = ({newData}) => {
+  // console.log(newData);
+  let navigate = useNavigate();
+
+  const handlerLocation = (data) =>{
+    const token = jwt.sign(
+      data,
+      "BLABLA"
+    );
+    navigate(`/locationproduct?token=${token}`);
+  };
+
+  const handlerStock = (data) => {
+    const token = jwt.sign(
+      data,
+      "BLABLA"
+    );
+    navigate(`/stockproduct?token=${token}`);
+  }
 
   return (
     <>
@@ -10,10 +31,10 @@ export const Card = ({newData}) => {
             <p className="card-text">s/ {elem.prices}</p>
           </div>
           <div className="cardButtons">
-            <button type="button" className="card-Btn-Stock">
+            <button type="button" className="card-Btn-Stock" onClick={() => handlerLocation(elem)}>
               Ubicación
             </button>
-            <button type="button" className="card-Btn-Stock">
+            <button type="button" className="card-Btn-Stock" onClick={()=> handlerStock(elem)}>
               Stock
             </button>
           </div>

@@ -1,7 +1,6 @@
-import BtnReturn from '../components/BtnReturn.jsx';
+import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import jwt_decode from "jwt-decode";
 
 const LocationProduct = ({ apiGetProduct }) => {
@@ -12,17 +11,28 @@ const LocationProduct = ({ apiGetProduct }) => {
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
-  // console.log(decoded);
-  localStorage.setItem('nombretienda', decoded.nombretienda);
-  localStorage.setItem('codigotienda', decoded.codigotienda);
+  
+  console.log(decoded);
+  sessionStorage.setItem('nombretienda', decoded.nombretienda);
+  sessionStorage.setItem('codigotienda', decoded.codigotienda);
+  sessionStorage.setItem('codigopais', decoded.codigopais);
 
-  const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+  // let pasilloProd = '';
+  // try{
+  //   pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+  // } catch{
+  //   console.log(decoded.codigopasillo)
+  //   debugger;
+  // }
+
+  let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
   const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
+  console.log(url)
 
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
-    setDataProducts(data)
+    setDataProducts(data);
   }
 
   useEffect(() => {
@@ -41,14 +51,14 @@ const LocationProduct = ({ apiGetProduct }) => {
         <img src={url} alt='' />
       </div>
       <div className="col titleCarousel">
-        <h1>Productos en este pasillo</h1>
+        <h1>Productos relacionados</h1>
         <hr />
       </div>
       <section className="carouselMainContainerl">
         <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
           <div className="carousel-inner" >
             {
-              dataProducts && dataProducts.map((item, index) => 
+              dataProducts ? (dataProducts.map((item, index) => 
                 index === 0 ? (
                 <div className="carousel-item active" key={index}>
                   <section className="containerImageText">
@@ -70,8 +80,9 @@ const LocationProduct = ({ apiGetProduct }) => {
                   </section>
                 </div>
                 )
-              
-              )}
+              )) : (<div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>) }
           </div>
 
           <button className="carousel-control-prev " type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
