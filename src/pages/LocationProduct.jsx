@@ -47,8 +47,6 @@ const LocationProduct = ({ apiGetProduct }) => {
     console.log(orderData)
   }
 
-  
-
   useEffect(() => {
     getProduct();
 
