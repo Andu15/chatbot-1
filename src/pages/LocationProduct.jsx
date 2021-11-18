@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const LocationProduct = ({ apiGetProduct }) => {
-
   const [dataProducts, setDataProducts] = useState([]);
 
   let { search } = useLocation();
@@ -44,7 +43,8 @@ const LocationProduct = ({ apiGetProduct }) => {
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">
-        <p>{decoded.codigocategoria}</p>
+        <p>{decoded.name}</p>
+        <p>Pasillo: {pasilloProd}</p>
       </div>
       <div className="containerImage">
         <img src={url} alt='' />
@@ -91,8 +91,7 @@ const LocationProduct = ({ apiGetProduct }) => {
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
           </button>
         </div>
-      </section>
-      
+                </section>
     </section>
   )
 }
