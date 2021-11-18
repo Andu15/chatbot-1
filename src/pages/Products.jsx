@@ -27,6 +27,9 @@ const Products = ({ apiGetProduct }) => {
     setSearcher(event.target.value);
   };
 
+  const onClick = () => searcher(product);
+  console.log(onClick);
+
   //data filtrada
   let newData;
 
@@ -39,7 +42,7 @@ const Products = ({ apiGetProduct }) => {
       return dataInput.includes(dataSearch);
     });
   };
-
+  
   return (
     <section className="">
       <section className="headerProducts">
@@ -58,15 +61,18 @@ const Products = ({ apiGetProduct }) => {
           <div className="col d-flex mt-3">
             <i className="fa fa-map-marker" aria-hidden="true"></i>
             <p>Tottus Angamos</p>
+            <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
           </div>
         </div>
       </section>
-      <Search onChange={handleSearch} product={product} />
+      <Search onChange={handleSearch} product={product} onClick={onClick} />
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        <Card newData={newData} />
+        {newData ? <Card newData={newData} /> : (<div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>)}
       </section>
     </section>
   );

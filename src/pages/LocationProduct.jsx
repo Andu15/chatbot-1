@@ -2,37 +2,44 @@ import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import imgDefault from '../assets/oops.png';
 
 const LocationProduct = ({ apiGetProduct }) => {
-
   const [dataProducts, setDataProducts] = useState([]);
+  console.log(dataProducts)
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
-  
+
   console.log(decoded);
   sessionStorage.setItem('nombretienda', decoded.nombretienda);
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
   sessionStorage.setItem('codigopais', decoded.codigopais);
 
-  // let pasilloProd = '';
-  // try{
-  //   pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
-  // } catch{
-  //   console.log(decoded.codigopasillo)
-  //   debugger;
-  // }
-
-  let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
-
-  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
-  console.log(url)
+  let url;
+  if (decoded.codigojerarquia && decoded.codigopasillo) {
+    let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+    url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
+  } else {
+    url = imgDefault;
+  }
 
   const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
-    setDataProducts(data);
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '10');
+
+
+    const orderData = data.sort(function (a, b) {
+      if (a.marca === "tottus") {
+        return data;
+      } if (b.marca !== "tottus") {
+        return data;
+      }
+      return data;
+    })
+    setDataProducts(orderData);
+    console.log(orderData)
   }
 
   useEffect(() => {
@@ -44,10 +51,13 @@ const LocationProduct = ({ apiGetProduct }) => {
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">
-        <p>{decoded.codigocategoria}</p>
+        <p>{decoded.name}</p>
+        {
+          decoded.pasillo && <p>Pasillo: {decoded.pasillo}</p>
+        }
       </div>
       <div className="containerImage">
-        <img src={url} alt='' />
+        <img src={url} alt='mapa del producto' />
       </div>
       <div className="col titleCarousel">
         <h1>Productos relacionados</h1>
@@ -57,7 +67,7 @@ const LocationProduct = ({ apiGetProduct }) => {
         <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
           <div className="carousel-inner" >
             {
-              dataProducts ? (dataProducts.map((item, index) => 
+              dataProducts ? (dataProducts.map((item, index) =>
                 index === 0 ? (
                   <div className="carousel-item active" key={index}>
                     <section className="containerImageText">
@@ -80,8 +90,8 @@ const LocationProduct = ({ apiGetProduct }) => {
                   </div>
                 )
               )) : (<div class="spinner-border text-success" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>) }
+                <span class="visually-hidden">Loading...</span>
+              </div>)}
           </div>
 
           <button className="carousel-control-prev " type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
