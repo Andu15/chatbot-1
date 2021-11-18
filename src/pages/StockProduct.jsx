@@ -56,7 +56,7 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   console.log(uniqueProduct);
 
   return (
-    <section>
+    <section className="">
       <BtnReturn />
       <StockAvalaible uniqueProduct={uniqueProduct}/>
       {/* <StockNotAvalaible /> */}
