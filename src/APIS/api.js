@@ -1,6 +1,7 @@
 import axios from "axios";
 import { datapasilloCategory } from "./category";
-import {dataTienda} from "./tiendasInfo";
+import {dataTienda}  from "./tiendasInfo";
+
 
 //search for  category
 export const apiGetCategori = async (
@@ -124,8 +125,9 @@ export const apiGetProductSku = async (sku, tienda) => {
 };
 
 
+//traer data de stock de acuerdo a un sku .
 export const getStockSku = async (sku) => {
-
+ 
   const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/stock?sku=${sku}`;
   let stockAxios = await axios({
         method: "GET",
@@ -143,11 +145,11 @@ export const getStockSku = async (sku) => {
 
     const dataStock = stockAxios.data.sku.map( (stock)=> {
       let nameStore= dataTienda.filter( str => str.CodigoLocal===stock.store);
-
+  
       if (nameStore[0]===undefined){
         nameStore[0]=" ";
       };
-
+  
       const data = {
         store:stock.store,
         storeName:nameStore[0].DescripcionLocal?nameStore[0].DescripcionLocal:" ",
@@ -156,13 +158,14 @@ export const getStockSku = async (sku) => {
         stockOnLine:stock.stockOnLine,
       };
       return data;
-
+  
     });
     console.log("datastockapi",dataStock);
-
+  
     return  dataStock;
   }else {
     console.log("no hay stock");
     return ([]);
   }
 }
+
