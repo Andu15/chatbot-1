@@ -47,14 +47,12 @@ const LocationProduct = ({ apiGetProduct }) => {
     console.log(orderData)
   }
 
-  
-
   useEffect(() => {
     getProduct();
 
   }, []);
 
-  return (
+   return (
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">
