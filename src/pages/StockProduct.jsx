@@ -39,9 +39,7 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
 
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '10');
-
     setDataProducts(data);
-    console.log(data)
   }
 
   useEffect(() => {
@@ -54,6 +52,7 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   }, []);
 
   console.log(uniqueProduct);
+
 
   return (
     <section className="">

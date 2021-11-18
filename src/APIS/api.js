@@ -29,7 +29,7 @@ export const apiGetCategori = async (
       id: key.id,
       description: key.description,
       images: key.images[0],
-      name: key.name,
+      name: key.nombreproducto,
       prices: key.prices.regularPrice,
       marca: key.attributes.marca,
       codigosku: key.sku,
@@ -75,7 +75,7 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
       codigojerarquia:(key.attributes.hierarchy.slice(0,9)),
       codigopasillo:(filterpasillo.map( key => key.pasillo))[0] ,
       codigopais: "PE",
-      nombreproducto: prod, //tengo duda aqui si debe ser categroia o producto
+      nombreproducto: key.name, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
     };
     return data;

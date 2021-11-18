@@ -52,7 +52,7 @@ const LocationProduct = ({ apiGetProduct }) => {
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">
-        <p>{decoded.name}</p>
+        <p>{decoded.nombreproducto}</p>
         {
           decoded.codigopasillo && <p>Pasillo: {decoded.codigopasillo}</p>
         }
