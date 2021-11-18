@@ -1,7 +1,6 @@
 import BtnReturn from '../components/BtnReturn.jsx';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import jwt_decode from "jwt-decode";
 
 const LocationProduct = ({ apiGetProduct }) => {
@@ -12,17 +11,27 @@ const LocationProduct = ({ apiGetProduct }) => {
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
-  // console.log(decoded);
-  localStorage.setItem('nombretienda', decoded.nombretienda);
-  localStorage.setItem('codigotienda', decoded.codigotienda);
+  
+  console.log(decoded);
+  sessionStorage.setItem('nombretienda', decoded.nombretienda);
+  sessionStorage.setItem('codigotienda', decoded.codigotienda);
+  sessionStorage.setItem('codigopais', decoded.codigopais);
 
-  const pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+  // let pasilloProd = '';
+  // try{
+  //   pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+  // } catch{
+  //   console.log(decoded.codigopasillo)
+  //   debugger;
+  // }
+
+  let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
   const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
 
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
-    setDataProducts(data)
+    setDataProducts(data);
   }
 
   useEffect(() => {

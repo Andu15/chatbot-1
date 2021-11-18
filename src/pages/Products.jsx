@@ -11,7 +11,9 @@ const Products = ({ apiGetProduct }) => {
   const [product, setProduct] = useState([]);
   const [searcher, setSearcher] = useState([]);
 
-  const codigoTienda = localStorage.getItem('codigotienda')
+  const codigoTienda = sessionStorage.getItem('codigotienda');
+  const codigoPais = sessionStorage.getItem('codigopais');
+  const nombreTienda = sessionStorage.getItem('nombretienda');
 
   const getProduct = async () => {
     const data = await apiGetProduct(searcher, codigoTienda, "1", "");
@@ -25,7 +27,6 @@ const Products = ({ apiGetProduct }) => {
   //function search//
   const handleSearch = (event) => {
     setSearcher(event.target.value);
-
   };
 
   const onClick = () => searcher(product);
@@ -42,7 +43,7 @@ const Products = ({ apiGetProduct }) => {
       const dataSearch = searcher.toLowerCase();
       return dataInput.includes(dataSearch);
     });
-  }
+  };
 
   return (
     <section className="">
@@ -76,4 +77,6 @@ const Products = ({ apiGetProduct }) => {
   );
 };
 
+
 export default Products;
+
