@@ -51,8 +51,6 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
     queryProduct();
   }, []);
 
-  console.log(uniqueProduct);
-
 
   return (
     <section className="">

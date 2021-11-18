@@ -14,6 +14,9 @@ export const apiGetCategori = async (
   const dataAxios = await axios({
     url: url,
     method: "GET",
+    header:{
+      'Access-Control-Allow-Origin':'*'
+    }
   });
 
   const resData = dataAxios.data.results;
@@ -49,6 +52,9 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
   const dataAxios = await axios({
     url: url,
     method: "GET",
+    header:{
+      'Access-Control-Allow-Origin':'*'
+    }
   });
 
   const resData = dataAxios.data.results; 
@@ -90,6 +96,9 @@ export const apiGetProductSku = async (sku, tienda) => {
   const dataAxios = await axios({
     url: url,
     method: "GET",
+    header:{
+      'Access-Control-Allow-Origin':'*'
+    }
   });
 
   const resData = dataAxios.data.results;
