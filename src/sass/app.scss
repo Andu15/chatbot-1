@@ -132,6 +132,7 @@ body{
   margin: 0;
   margin: 0px 30px;
   margin-bottom: 40px;
+  bottom: 0;
   @include breakpoint(tablet) {
     margin-left: 100px;
     margin-right: 100px;
@@ -224,6 +225,13 @@ body{
   font-size: 25px;
   color: map-get($color,greenMedium);
   margin-right: 5px;
+}
+.textLocation p{
+  color: map-get($color,greyLight);
+  margin-bottom: 0;
+}
+.textLocation p:first-child{
+  font-weight: bold;
 }
 /* searchProducts */
 .searchProducts {
@@ -321,11 +329,12 @@ body{
   }
 }
 .myCard h5 {
-  font-size: map-get($font-size,m);
+  font-size: 0.8em;
   color: map-get($color,greyLight);
   text-align: center;
   margin: 0;
   text-transform: uppercase !important;
+  padding: 0px 15px;
 }
 .myCard p {
   font-size: map-get($font-size,m);
@@ -432,7 +441,7 @@ body{
     width: 55%;
   }
   @include breakpoint(desktop) {
-    width: 60%;
+    width: 50%;
   }
 }
 .containerTextProduct {
@@ -508,6 +517,9 @@ body{
   margin: 0px;
 }
 /**vista stock*/
+.viewStockproduct {
+  min-height: 530px;
+}
 .containerImageStock {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -567,7 +579,21 @@ body{
   padding-bottom: 5px;
 }
 .allTextStock h3{
-
+  color: map-get($color,greyLight);
+  font-size: map-get($font-size,ml);
+}
+.allTextStock p:nth-child(2) {
+  color: map-get($color,greenDark);
+  font-size: map-get($font-size,ml);
+}
+.allTextStock p:nth-child(3) {
+  font-size: map-get($font-size,m);
+  color: #9B9B9B;
+  line-height: 20px;
+}
+.allTextStock span {
+  cursor: pointer;
+  color: map-get($color,greenMedium);
 }
 .textAvalaibleStock {
   background-color: map-get($color,colorWhite);

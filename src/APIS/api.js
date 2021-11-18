@@ -1,5 +1,7 @@
 import axios from "axios";
 import { datapasilloCategory } from "./category";
+import {dataTienda}  from "./tiendasInfo";
+
 
 //search for  category
 export const apiGetCategori = async (
@@ -121,3 +123,49 @@ export const apiGetProductSku = async (sku, tienda) => {
 
   return resultado;
 };
+
+
+//traer data de stock de acuerdo a un sku .
+export const getStockSku = async (sku) => {
+ 
+  const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/stock?sku=${sku}`;
+  let stockAxios = await axios({
+        method: "GET",
+        headers: { 
+          'x-country': 'PE', 
+          'x-commerce': 'Tottus', 
+          'x-usrtx': 'tss'
+        },
+        url: url,
+ });  
+
+
+  if(stockAxios.data!==0){
+    console.log(" hay stock");
+
+    const dataStock = stockAxios.data.sku.map( (stock)=> {
+      let nameStore= dataTienda.filter( str => str.CodigoLocal===stock.store);
+  
+      if (nameStore[0]===undefined){
+        nameStore[0]=" ";
+      };
+  
+      const data = {
+        store:stock.store,
+        storeName:nameStore[0].DescripcionLocal?nameStore[0].DescripcionLocal:" ",
+        storeImagen:nameStore[0].Imagen?nameStore[0].Imagen:"https://static.wikia.nocookie.net/logopedia/images/9/92/Tottus_logo_apilado_2006.svg/revision/latest/scale-to-width-down/250?cb=20210325031327&path-prefix=es",
+        stockAvailable:stock.stockAvailable,
+        stockOnLine:stock.stockOnLine,
+      };
+      return data;
+  
+    });
+    console.log("datastockapi",dataStock);
+  
+    return  dataStock;
+  }else {
+    console.log("no hay stock");
+    return ([]);
+  }
+}
+
