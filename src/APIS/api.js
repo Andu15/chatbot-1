@@ -78,8 +78,8 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
       marca: key.attributes.marca,
       ean: key.attributes.ean,
       description: key.description,
-      codigojerarquia:(key.attributes.hierarchy.slice(0,9)),
-      codigopasillo:(filterpasillo.map( key => key.pasillo))[0] ,
+      codigojerarquia:(key.attributes.hierarchy.slice(0,9))?(key.attributes.hierarchy.slice(0,9)):"",
+      codigopasillo:(filterpasillo.map( key => key.pasillo))[0]? (filterpasillo.map( key => key.pasillo))[0]:"",
       codigopais: "PE",
       nombreproducto: prod, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
@@ -104,7 +104,8 @@ export const apiGetProductSku = async (sku, tienda) => {
   console.log("respuestaSku", resData);
 
   const resultado = resData.map((key) => {
-
+    console.log("api");
+    console.log("api",key.attributes.hierarchy.slice(0,9));
     //filtrra pasillos 
     const filterpasillo = datapasilloCategory.filter(
       (res) =>{
@@ -125,8 +126,8 @@ export const apiGetProductSku = async (sku, tienda) => {
       codigosku: key.sku,
       description: key.description,
       ean: key.attributes.ean,
-      codigojerarquia:(key.attributes.hierarchy.slice(0,9)),
-      codigopasillo: filterpasillo[0].pasillo,
+      codigojerarquia:(key.attributes.hierarchy.slice(0,9))?(key.attributes.hierarchy.slice(0,9)):"",
+      codigopasillo: (filterpasillo[0].pasillo)?(filterpasillo[0].pasillo):"",
       codigopais: "PE",
       nombreproducto:key.name, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
