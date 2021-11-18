@@ -24,7 +24,7 @@ export const Card = ({newData}) => {
   return (
     <>
       {newData.map((elem) => (
-        <div key={elem.sku} className="myCard">
+        <div key={elem.codigosku} className="myCard">
           <img src={elem.images} className="card-img-top" alt={elem.name} />
           <div className="">
             <h5 className="card-title">{elem.name}</h5>
