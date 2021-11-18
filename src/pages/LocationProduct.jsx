@@ -1,11 +1,9 @@
 import BtnReturn from '../components/BtnReturn.jsx';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import jwt_decode from "jwt-decode";
 
 const LocationProduct = ({ apiGetProduct }) => {
-
   const [dataProducts, setDataProducts] = useState([]);
 
   let { search } = useLocation();
@@ -21,7 +19,7 @@ const LocationProduct = ({ apiGetProduct }) => {
   const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
 
   const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '8');
     setDataProducts(data)
   }
 
@@ -81,8 +79,7 @@ const LocationProduct = ({ apiGetProduct }) => {
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
           </button>
         </div>
-      </section>
-      
+                </section>
     </section>
   )
 }
