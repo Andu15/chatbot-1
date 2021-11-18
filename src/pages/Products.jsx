@@ -1,4 +1,3 @@
-//import logo from '../assets/tottusLogo.png';
 import { useEffect, useState } from "react";
 import smallLogo from "../assets/logoTottus-64x64.png";
 import { Card } from "../components/Card";
@@ -34,7 +33,6 @@ const Products = ({ apiGetProduct }) => {
 
   //data filtrada
   let newData;
-
   if (!searcher.length >= 1) {
     newData = data;
   } else {
@@ -82,4 +80,3 @@ const Products = ({ apiGetProduct }) => {
 
 
 export default Products;
-
