@@ -329,11 +329,12 @@ body{
   }
 }
 .myCard h5 {
-  font-size: map-get($font-size,m);
+  font-size: 0.8em;
   color: map-get($color,greyLight);
   text-align: center;
   margin: 0;
   text-transform: uppercase !important;
+  padding: 0px 15px;
 }
 .myCard p {
   font-size: map-get($font-size,m);
@@ -440,7 +441,7 @@ body{
     width: 55%;
   }
   @include breakpoint(desktop) {
-    width: 60%;
+    width: 50%;
   }
 }
 .containerTextProduct {
@@ -578,7 +579,21 @@ body{
   padding-bottom: 5px;
 }
 .allTextStock h3{
-
+  color: map-get($color,greyLight);
+  font-size: map-get($font-size,ml);
+}
+.allTextStock p:nth-child(2) {
+  color: map-get($color,greenDark);
+  font-size: map-get($font-size,ml);
+}
+.allTextStock p:nth-child(3) {
+  font-size: map-get($font-size,m);
+  color: #9B9B9B;
+  line-height: 20px;
+}
+.allTextStock span {
+  cursor: pointer;
+  color: map-get($color,greenMedium);
 }
 .textAvalaibleStock {
   background-color: map-get($color,colorWhite);
