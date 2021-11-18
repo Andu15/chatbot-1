@@ -5,7 +5,7 @@ const StockAvalaible = ({uniqueProduct}) => {
                     <span class="visually-hidden">Loading...</span>
                   </div>
 
-  const succesfulData = uniqueProduct.map(e=>(<section className="container" key={e.sku}>
+  const succesfulData = uniqueProduct.map(e=>(<section className="container" key={e.codigosku}>
                           <div className="row">
                             <div className="col">
                               <img src={e.images} alt={e.name}/>
