@@ -26,21 +26,21 @@ const LocationProduct = ({ apiGetProduct }) => {
     url = imgDefault;
   }
 
-  const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '10');
 
+  const getProduct = async () => {
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
 
     const orderData = data.sort(function (a, b) {
       if (a.marca === "tottus") {
-        return data;
+        return 1;
       } if (b.marca !== "tottus") {
-        return data;
+        return -1
       }
-      return data;
-    })
+      return 0;
+    });
     setDataProducts(orderData);
     console.log(orderData)
-  }
+  };
 
   useEffect(() => {
     getProduct();
