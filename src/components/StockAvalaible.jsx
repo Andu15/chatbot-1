@@ -1,10 +1,8 @@
+import { useState } from "react";
 
 const StockAvalaible = ({uniqueProduct}) => {
+  const [ vermas, setVermas] = useState(false);
 
-  const leermas = () =>{
-    console.log('aqui va el texto leer mas')
-    //<p>{e.description}</p>
-  }
   const spinner = <div class="spinner-border text-success" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
@@ -21,7 +19,7 @@ const StockAvalaible = ({uniqueProduct}) => {
           <h3>{e.name}</h3>
           <p>S/ {e.prices} UN</p>
           {
-            e.description.length > 50 ? <p>{e.description.substring(0, 100)}<span onClick={leermas}> leer mas...</span></p> :
+            e.description.length > 50 ? <p>{e.description.substring(0, 100)}{vermas ? e.description.substring(100, 800): ''}<span onClick={()=> setVermas(!vermas)}> {vermas ? 'ver menos...' :'leer mas...'}</span></p> :
             <p>{e.description}</p>
           }
         </div>
