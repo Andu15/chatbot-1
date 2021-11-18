@@ -74,4 +74,6 @@ const Products = ({ apiGetProduct }) => {
   );
 };
 
+
 export default Products;
+
