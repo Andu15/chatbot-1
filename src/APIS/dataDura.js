@@ -9,7 +9,6 @@ LECHE:J01010704-3B,
 */
 
 export const dataDura = [
-   
     {
         "id": "41231992",
         "images": "https://e39a9f00db6c5bc097f9-75bc5dce1d64f93372e7c97ed35869cb.ssl.cf1.rackcdn.com/img-ew8i0Czu.jpg",
@@ -21,9 +20,9 @@ export const dataDura = [
         "codigopais": "PE",
         "nombreproducto": "cafe",
         "codigotienda": "123",
-        "mapa":" https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/J01010702-3B.jpg",
+        "mapa": " https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/J01010702-3B.jpg",
         "marca": "nescafe",
-         "ean": "7754308001186",
+        "ean": "7754308001186",
         "description": "¿Dónde podrás encontrar el mejor café del mercado y a un buen precio? ¡Pues en Tottus! Tenemos para ti este café selecto de la marca Cafetal, el cual está fabricado con el más fino café arábico 100% peruano. El proceso de fabricación es el mismo que viene usando desde hace más de 55 años, con una selección y conservación de máxima calidad para llevar a tu mesa un producto competitivo en el mercado.\nSi quieres darle un toque único de sabor a tu leche evaporada o descremada, te recomendamos usar este riquísimo café selecto de la marca Cafetal. ¡Siente todo su sabor desde el primer sorbo!"
     },
     {
@@ -37,12 +36,12 @@ export const dataDura = [
         "codigopais": "PE",
         "nombreproducto": "cafe",
         "codigotienda": "123",
-        "mapa":" https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/J01010702-3B.jpg",
+        "mapa": " https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/J01010702-3B.jpg",
         "marca": "nescafe",
         "ean": "7613035818583",
         "description": "Este café Gold Blend de la marca Nescafé es un producto soluble premium con una textura, aroma y sabor equilibrado. Está fabricado a base de café arábico molido hasta diez veces, proceso por el cual consiguen liberar todo su aroma grano por grano. Como los buenos cafés, es rico en antioxidantes que favorecen al organismo para llenarlo de energía y vitalidad. ¡Consíguelo a buen precio a través de la web de Tottus!\nComprueba su aroma de calidad mezclándolo con una leche descremada, pizcas de azúcar y gotas de miel de abeja. ¿Te sorprende esta combinación? ¡Pruébala y verás que te encantará!"
     },
-           
+    
         {
             "id": "41119510",
             "images": "https://e39a9f00db6c5bc097f9-75bc5dce1d64f93372e7c97ed35869cb.ssl.cf1.rackcdn.com/img-VL4OOhGb.jpg",

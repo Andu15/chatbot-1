@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 const StockAvalaible = ({uniqueProduct}) => {
   const [ vermas, setVermas] = useState(false);
 
@@ -9,10 +10,9 @@ const StockAvalaible = ({uniqueProduct}) => {
   
   const succesfulData = uniqueProduct.map(e=>
     (
-
     <section className="viewStockproduct" key={e.codigosku}>
       <section className="containerImageStock">
-                              <img src={e.images} alt={e.name}/>
+        <img src={e.images} alt={e.name} />
       </section>
       <section className="containerTextStock">
         <div className="allTextStock">
@@ -28,7 +28,7 @@ const StockAvalaible = ({uniqueProduct}) => {
         <p>STOCK NO DISPONIBLE</p>
       </section>
     </section>
-    ))
+  ))
 
   return (
     <>
