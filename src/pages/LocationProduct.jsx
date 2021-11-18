@@ -50,14 +50,14 @@ const LocationProduct = ({ apiGetProduct }) => {
         <img src={url} alt='' />
       </div>
       <div className="col titleCarousel">
-        <h1>Productos en este pasillo</h1>
+        <h1>Productos relacionados</h1>
         <hr />
       </div>
       <section className="carouselMainContainerl">
         <div id="carouselExampleControlsNoTouching" className="carousel slide contentCarrusel" data-bs-touch="false" data-bs-interval="false" >
           <div className="carousel-inner" >
             {
-              dataProducts && dataProducts.map((item, index) => 
+              dataProducts ? (dataProducts.map((item, index) => 
                 index === 0 ? (
                 <div className="carousel-item active" key={index}>
                   <section className="containerImageText">
@@ -79,8 +79,9 @@ const LocationProduct = ({ apiGetProduct }) => {
                   </section>
                 </div>
                 )
-              
-              )}
+              )) : (<div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>) }
           </div>
 
           <button className="carousel-control-prev " type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
