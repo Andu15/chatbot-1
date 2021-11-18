@@ -58,7 +58,7 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
   //     res.codigo_tienda === Number(tienda) &&
   //     res.categoria.includes(prod.toUpperCase())
   // );
-  console.log("pasillos",filterpasillo);
+  // console.log("pasillos",filterpasillo);
 
   const resultado = resData.map((key) => {
     const data = {
