@@ -8,7 +8,7 @@ import Products from './pages/Products.jsx';
 import LocationProduct from './pages/LocationProduct.jsx';
 import StockProduct from './pages/StockProduct.jsx';
 import Error404 from './pages/Error404';
-import {apiGetCategori, apiGetProduct, apiGetProductSku, getUbicacion} from './APIS/api';
+import {apiGetCategori, apiGetProduct, apiGetProductSku} from './APIS/api';
 
 const App = () => {
 
@@ -20,19 +20,16 @@ const App = () => {
             apiGetCategori={apiGetCategori}
             apiGetProduct={apiGetProduct}
             apiGetProductSku={apiGetProductSku}
-            getUbicacion={getUbicacion}
             />}/>
           <Route path="/stockproduct" element={<StockProduct
             apiGetCategori={apiGetCategori}
             apiGetProduct={apiGetProduct}
             apiGetProductSku={apiGetProductSku}
-            getUbicacion={getUbicacion}
             />} />
           <Route path="/experienciatienda" element={<Products
             apiGetCategori={apiGetCategori}
             apiGetProduct={apiGetProduct}
             apiGetProductSku={apiGetProductSku}
-            getUbicacion={getUbicacion}
             />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
