@@ -6,6 +6,7 @@ import imgDefault from '../assets/logoTottus-128x128.png';
 
 const LocationProduct = ({ apiGetProduct }) => {
   const [dataProducts, setDataProducts] = useState([]);
+  console.log(dataProducts)
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
@@ -26,8 +27,20 @@ const LocationProduct = ({ apiGetProduct }) => {
   }
 
   const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
-    setDataProducts(data);
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '10');
+   
+  
+    const orderData= data.sort(function(a, b){
+      
+      if(a.marca === "tottus"){
+        return data;
+      }if (b.marca !== "tottus"){
+        return data;
+      }
+      return data;
+    })
+    setDataProducts(orderData);
+    console.log(orderData)
   }
 
   useEffect(() => {
@@ -35,7 +48,7 @@ const LocationProduct = ({ apiGetProduct }) => {
 
   }, []);
 
-  return (
+   return (
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">

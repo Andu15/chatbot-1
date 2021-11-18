@@ -1,6 +1,6 @@
 
 
-export const Search = ({onChange, product}) => {
+export const Search = ({onChange, product, onClick}) => {
     
   
  
@@ -14,7 +14,7 @@ export const Search = ({onChange, product}) => {
               <input type="search" className="form-control mySearchProducts"  onChange={onChange} placeholder="Buscar" aria-label="Search"
               aria-describedby="search-addon" />
             <span className="input-group-text mySearchProducts" id="search-addon">
-              <i className="fas fa-search"></i>
+              <i onClick={onClick} className="fas fa-search"></i>
             </span>
           </div>
         </section>
