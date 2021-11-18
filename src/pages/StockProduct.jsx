@@ -21,7 +21,7 @@ const StockProduct = ({ apiGetProductSku }) => {
   // sessionStorage.setItem('codigopais', decoded.codigopais);
 
   const queryProduct = async() =>{
-    const info = await apiGetProductSku(decoded.sku, decoded.codigotienda);
+    const info = await apiGetProductSku(decoded.codigosku, decoded.codigotienda);
     setUniqueProduct(info);
   };
 
