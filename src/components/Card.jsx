@@ -10,12 +10,15 @@ export const Card = ({newData}) => {
       data,
       "BLABLA"
     );
-    // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RpZ29wYWlzIjoiUEUiLCJub21icmVwcm9kdWN0byI6ImRlc29kb3JhbnRlcyIsImNvZGlnb3RpZW5kYSI6IjEyMyIsIm5vbWJyZXRpZW5kYSI6IlRvdHR1cyBBbmdhbW9zIiwiY29kaWdvY2F0ZWdvcmlhIjoiREVTT0RPUkFOVEVTIFBFUlNPTkFMRVMiLCJjb2RpZ29wYXNpbGxvIjoiNi41IEEiLCJjb2RpZ29qZXJhcnF1aWEiOiJKMDIwMjAzMDMiLCJpYXQiOjE2MzcwMDk4MzR9.xWI6kPFvSogZiMe7xBxoUx-fbxLWB7YyPuyURCmVhLM";
     navigate(`/locationproduct?token=${token}`);
   };
 
   const handlerStock = (data) => {
-
+    const token = jwt.sign(
+      data,
+      "BLABLA"
+    );
+    navigate(`/stockproduct?token=${token}`);
   }
 
   return (
@@ -31,7 +34,7 @@ export const Card = ({newData}) => {
             <button type="button" className="card-Btn-Stock" onClick={() => handlerLocation(elem)}>
               Ubicación
             </button>
-            <button type="button" className="card-Btn-Stock">
+            <button type="button" className="card-Btn-Stock" onClick={()=> handlerStock(elem)}>
               Stock
             </button>
           </div>

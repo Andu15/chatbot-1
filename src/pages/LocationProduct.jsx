@@ -1,4 +1,4 @@
-import BtnReturn from '../components/BtnReturn.jsx';
+import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
