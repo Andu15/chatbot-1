@@ -132,6 +132,7 @@ body{
   margin: 0;
   margin: 0px 30px;
   margin-bottom: 40px;
+  bottom: 0;
   @include breakpoint(tablet) {
     margin-left: 100px;
     margin-right: 100px;
@@ -224,6 +225,13 @@ body{
   font-size: 25px;
   color: map-get($color,greenMedium);
   margin-right: 5px;
+}
+.textLocation p{
+  color: map-get($color,greyLight);
+  margin-bottom: 0;
+}
+.textLocation p:first-child{
+  font-weight: bold;
 }
 /* searchProducts */
 .searchProducts {
@@ -508,6 +516,9 @@ body{
   margin: 0px;
 }
 /**vista stock*/
+.viewStockproduct {
+  min-height: 530px;
+}
 .containerImageStock {
   padding-top: 30px;
   padding-bottom: 30px;
