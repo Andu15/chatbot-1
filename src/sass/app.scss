@@ -293,16 +293,18 @@ body{
   margin: 10px 10px 5px;
 }
 .containerProduts {
-  margin: 0px 30px;
+  margin: 0px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 30px;
   grid-row-gap: 15px;
+  justify-items: center;
+  align-items: center;
   /*flex-wrap: wrap;*/
   @include breakpoint(phablet) {
     margin: 0px 100px;
     display: grid;
-    justify-items: center;
+    /* justify-items: center; */
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
   }
