@@ -5,32 +5,25 @@ const StockAvalaible = ({uniqueProduct}) => {
                     <span class="visually-hidden">Loading...</span>
                   </div>
 
-  const succesfulData = uniqueProduct.map(e=>(<section className="container" key={e.codigosku}>
-                          <div className="row">
-                            <div className="col">
+  const succesfulData = uniqueProduct.map(e=>(<section className="" key={e.codigosku}>
+                            <section className="containerImageStock">
                               <img src={e.images} alt={e.name}/>
+                            </section>
+                          <section className="containerTextStock">
+                            <div className="allTextStock">
+                              <h3>{e.name}</h3>
+                              <p>{e.marca}</p>
+                              <p>S/ {e.prices}</p>
+                              {
+                                e.description.length > 50 ? <p>{e.description.substring(0, 100)}...</p> :
+                                <p>{e.description}</p>
+                              }
+                              {/* {<p>{e.description.substring(0, 100)}...</p>} */}
                             </div>
-                          </div>
-                          <div className="row">
-                            <div className="col">
-                              <h2>{e.name}</h2>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col">
-                              <h2>S/ {e.prices}</h2>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col">
-                              <p>{e.description}</p>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col">
-                              <div className="alert alert-success" role="alert">STOCK NO DISPONIBLE</div>
-                            </div>
-                          </div>
+                          </section>
+                            <section className="textAvalaibleStock">
+                              <p>STOCK NO DISPONIBLE</p>
+                            </section>
                         </section>))
 
   return (

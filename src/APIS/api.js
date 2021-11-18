@@ -21,8 +21,6 @@ export const apiGetCategori = async (
       res.codigo_tienda === Number(tienda) &&
       res.categoria.includes(categoria.toUpperCase())
   );
-  
-  console.log("oasillos", filterpasillo);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -51,23 +49,17 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
     method: "GET",
   });
 
-  const resData = dataAxios.data.results;
-   console.log("dataAxios",resData);
- 
+  const resData = dataAxios.data.results; 
 
   const resultado = resData.map((key) => {
   
      //filtrra pasillos 
      const filterpasillo = datapasilloCategory.filter(
       (res) =>{
-       //console.log(res);
         return (res.codigo_tienda === Number(tienda) &&
         res.jerarquia === key.attributes.hierarchy.slice(0,9))
       }
     );
-
-
-    console.log("datafilter",filterpasillo.map( key => key.pasillo));
 
     const data = {
       id: key.id,
@@ -78,15 +70,14 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
       marca: key.attributes.marca,
       ean: key.attributes.ean,
       description: key.description,
-      codigojerarquia:(key.attributes.hierarchy.slice(0,9))?(key.attributes.hierarchy.slice(0,9)):"",
-      codigopasillo:(filterpasillo.map( key => key.pasillo))[0]? (filterpasillo.map( key => key.pasillo))[0]:"",
+      codigojerarquia:(key.attributes.hierarchy.slice(0,9)),
+      codigopasillo:(filterpasillo.map( key => key.pasillo))[0] ,
       codigopais: "PE",
       nombreproducto: prod, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
     };
     return data;
   });
-  console.log("data prouct en api.js", resultado);
   return resultado;
 };
 
@@ -99,24 +90,17 @@ export const apiGetProductSku = async (sku, tienda) => {
     method: "GET",
   });
 
-  //console.log("dataAxios sku", dataAxios);
   const resData = dataAxios.data.results;
-  console.log("respuestaSku", resData);
 
   const resultado = resData.map((key) => {
-    console.log("api");
-    console.log("api",key.attributes.hierarchy.slice(0,9));
+
     //filtrra pasillos 
     const filterpasillo = datapasilloCategory.filter(
       (res) =>{
-       //console.log(res);
         return (res.codigo_tienda === Number(tienda) &&
         res.jerarquia=== key.attributes.hierarchy.slice(0,9))
       }
     );
-
-    console.log("filterpasillo", filterpasillo);
-    console.log("jeraquia",key.attributes.hierarchy.slice(0,9));
     
     const data = {
       id: key.id,
@@ -126,16 +110,14 @@ export const apiGetProductSku = async (sku, tienda) => {
       codigosku: key.sku,
       description: key.description,
       ean: key.attributes.ean,
-      codigojerarquia:(key.attributes.hierarchy.slice(0,9))?(key.attributes.hierarchy.slice(0,9)):"",
-      codigopasillo: (filterpasillo[0].pasillo)?(filterpasillo[0].pasillo):"",
+      codigojerarquia:(key.attributes.hierarchy.slice(0,9)),
+      codigopasillo: filterpasillo[0].pasillo,
       codigopais: "PE",
       nombreproducto:key.name, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
     };
     return data;
   });
-
-  //console.log("datasku api",resultado);
 
   return resultado;
 };

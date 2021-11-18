@@ -23,8 +23,8 @@ export const Card = ({newData}) => {
 
   return (
     <>
-      {newData.map((elem) => (
-        <div key={elem.codigosku} className="myCard">
+      {newData.map((elem, index) => (
+        <div key={index} className="myCard">
           <img src={elem.images} className="card-img-top" alt={elem.name} />
           <div className="">
             <h5 className="card-title">{elem.name}</h5>
