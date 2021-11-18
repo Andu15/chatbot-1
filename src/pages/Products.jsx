@@ -28,6 +28,9 @@ const Products = ({ apiGetProduct }) => {
 
   };
 
+  const onClick = () => searcher(product);
+  console.log(onClick);
+
   //data filtrada
   let newData;
 
@@ -62,7 +65,7 @@ const Products = ({ apiGetProduct }) => {
           </div>
         </div>
       </section>
-      <Search onChange={handleSearch} product={product} />
+      <Search onChange={handleSearch} product={product} onClick={onClick} />
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
       </section>
