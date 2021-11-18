@@ -19,7 +19,7 @@ const LocationProduct = ({ apiGetProduct }) => {
   sessionStorage.setItem('codigopais', decoded.codigopais);
 
   let url;
-  if(decoded.codigojerarquia && decoded.codigopasillo === ""){
+  if(decoded.codigojerarquia && decoded.codigopasillo){
     let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
     url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
   } else {

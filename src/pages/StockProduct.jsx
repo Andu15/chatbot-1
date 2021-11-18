@@ -29,6 +29,8 @@ const StockProduct = ({ apiGetProductSku }) => {
     queryProduct();
   }, []);
 
+  console.log(uniqueProduct);
+
   return (
     <section>
       <BtnReturn />
