@@ -43,14 +43,14 @@ const LocationProduct = ({ apiGetProduct }) => {
     <section className='d-flex flex-column'>
       <BtnReturn />
       <div className="containerTextProduct">
-        <p>{decoded.codigocategoria}</p>
+        <p>{decoded.name}</p>
         <p>Pasillo: {pasilloProd}</p>
       </div>
       <div className="containerImage">
         <img src={url} alt='' />
       </div>
       <div className="col titleCarousel">
-        <h1>Productos en este pasillo</h1>
+        <h1>Productos relacionados</h1>
         <hr />
       </div>
       <section className="carouselMainContainerl">
