@@ -3,35 +3,38 @@ import BtnReturn from '../components/BtnReturn';
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import StockAvalaible from '../components/StockAvalaible.jsx';
+import StockNotAvalaible from '../components/StockNotAvalaible.jsx';
 
-const StockProduct = ({ apiGetProduct }) => {
+const StockProduct = ({ apiGetProductSku }) => {
 
-  const [dataProducts, setDataProducts] = useState([]);
+  const [uniqueProduct, setUniqueProduct] = useState([]);
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
   console.log(decoded);
-  localStorage.setItem('nombretienda', decoded.nombretienda);
-  localStorage.setItem('codigotienda', decoded.codigotienda);
 
-  // const getProduct = async () => {
-  //   const data = await apiGetProduct(decoded.nombreproducto, decoded.codigotienda, "1", "20")
-  //   setDataProducts(data);
-  // }
+  sessionStorage.setItem('nombretienda', decoded.nombretienda);
+  sessionStorage.setItem('codigotienda', decoded.codigotienda);
+  sessionStorage.setItem('codigopais', decoded.codigopais);
+  // sessionStorage.setItem('codigopais', decoded.codigopais);
 
-  // useEffect(() => {
-  //   getProduct();
-  // }, []);
+  const queryProduct = async() =>{
+    const info = await apiGetProductSku(decoded.sku);
+    setUniqueProduct(info)
+  };
 
-  // console.log(dataProducts)
-
+  useEffect(()=>{
+    queryProduct();
+  }, []);
 
   return (
     <section>
       <BtnReturn />
-      {/* <StockAvalaible dataProducts={dataProducts} setDataProducts={setDataProducts}/> */}
+      { 
+        !!uniqueProduct.length ? <StockAvalaible uniqueProduct={uniqueProduct}/> : <StockNotAvalaible />
+      }
     </section>
   )
 }
