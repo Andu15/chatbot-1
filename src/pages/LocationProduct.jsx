@@ -2,7 +2,7 @@ import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import imgDefault from '../assets/oops.png';
+import imgDefault from '../assets/oops.jpg';
 
 const LocationProduct = ({ apiGetProduct }) => {
   const [dataProducts, setDataProducts] = useState([]);
