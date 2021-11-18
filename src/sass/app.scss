@@ -76,7 +76,7 @@ body{
   margin-top: 10px;
   margin-bottom: 0px;
   background-color: map-get($color,colorWhite);
-  border-radius: 10px;
+  border-radius: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
   align-items: center;
@@ -91,7 +91,7 @@ body{
 }
 .textCarousel h5{
   color: map-get($color,greyLight);
-  font-size: map-get($font-size,m);
+  font-size: map-get($font-size,s);
   text-align: center;
   margin: 0;
   @include breakpoint(tablet) {
@@ -150,7 +150,7 @@ body{
   width: 100% !important;
 }
 .contentCarrusel button {
-  margin-top: 13%;
+  margin-top: 16%;
   background-color: #10C94A;
   border-radius: 30px;
   height: 30px;
