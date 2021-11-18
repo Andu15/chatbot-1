@@ -63,6 +63,7 @@ const Products = ({ apiGetProduct }) => {
           <div className="col d-flex mt-3">
             <i className="fa fa-map-marker" aria-hidden="true"></i>
             <p>Tottus Angamos</p>
+            <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
           </div>
         </div>
       </section>
@@ -71,7 +72,9 @@ const Products = ({ apiGetProduct }) => {
         <h2>Nuestros productos</h2>
       </section>
       <section className="containerProduts">
-        <Card newData={newData} />
+        {newData ? <Card newData={newData} /> : (<div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>)}
       </section>
     </section>
   );

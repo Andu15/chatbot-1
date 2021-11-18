@@ -21,8 +21,8 @@ const StockProduct = ({ apiGetProductSku }) => {
   // sessionStorage.setItem('codigopais', decoded.codigopais);
 
   const queryProduct = async() =>{
-    const info = await apiGetProductSku(decoded.sku);
-    setUniqueProduct(info)
+    const info = await apiGetProductSku(decoded.sku, decoded.codigotienda);
+    setUniqueProduct(info);
   };
 
   useEffect(()=>{
@@ -32,9 +32,11 @@ const StockProduct = ({ apiGetProductSku }) => {
   return (
     <section>
       <BtnReturn />
-      { 
-        !!uniqueProduct.length ? <StockAvalaible uniqueProduct={uniqueProduct}/> : <StockNotAvalaible />
-      }
+      <StockAvalaible uniqueProduct={uniqueProduct}/>
+      {/* <StockNotAvalaible /> */}
+        {/* { 
+          !!uniqueProduct.length ? <StockAvalaible uniqueProduct={uniqueProduct}/> : <StockNotAvalaible />
+        } */}
     </section>
   )
 }

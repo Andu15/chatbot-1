@@ -2,6 +2,7 @@ import BtnReturn from '../components/BtnReturn';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import imgDefault from '../assets/oops.png';
 
 const LocationProduct = ({ apiGetProduct }) => {
   const [dataProducts, setDataProducts] = useState([]);
@@ -17,18 +18,13 @@ const LocationProduct = ({ apiGetProduct }) => {
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
   sessionStorage.setItem('codigopais', decoded.codigopais);
 
-  // let pasilloProd = '';
-  // try{
-  //   pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
-  // } catch{
-  //   console.log(decoded.codigopasillo)
-  //   debugger;
-  // }
-
-  let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
-
-  const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
-  console.log(url)
+  let url;
+  if(decoded.codigojerarquia && decoded.codigopasillo){
+    let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
+    url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
+  } else {
+    url = imgDefault;
+  }
 
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '10');
@@ -57,10 +53,12 @@ const LocationProduct = ({ apiGetProduct }) => {
       <BtnReturn />
       <div className="containerTextProduct">
         <p>{decoded.name}</p>
-        <p>Pasillo: {pasilloProd}</p>
+        {
+          decoded.pasillo && <p>Pasillo: {decoded.pasillo}</p>
+        }
       </div>
       <div className="containerImage">
-        <img src={url} alt='' />
+        <img src={url} alt='mapa del producto' />
       </div>
       <div className="col titleCarousel">
         <h1>Productos relacionados</h1>
