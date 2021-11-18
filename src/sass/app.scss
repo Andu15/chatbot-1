@@ -292,6 +292,8 @@ body{
 }
 .myCard img {
   width: 55%;
+  height: 9em;
+  object-fit: contain;
   margin: 10px 10px 5px;
 }
 .containerProduts {

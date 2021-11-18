@@ -21,8 +21,13 @@ const Products = ({ apiGetProduct }) => {
   };
 
   useEffect(() => {
-    getProduct();
+    const timer = setTimeout(() => {
+      getProduct();
+    }, 1000);
+    return () => clearTimeout(timer);
+    
   }, [searcher]);
+
 
   //function search//
   const handleSearch = (event) => {
