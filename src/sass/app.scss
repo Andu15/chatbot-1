@@ -132,6 +132,7 @@ body{
   margin: 0;
   margin: 0px 30px;
   margin-bottom: 40px;
+  bottom: 0;
   @include breakpoint(tablet) {
     margin-left: 100px;
     margin-right: 100px;
@@ -224,6 +225,13 @@ body{
   font-size: 25px;
   color: map-get($color,greenMedium);
   margin-right: 5px;
+}
+.textLocation p{
+  color: map-get($color,greyLight);
+  margin-bottom: 0;
+}
+.textLocation p:first-child{
+  font-weight: bold;
 }
 /* searchProducts */
 .searchProducts {
@@ -507,7 +515,100 @@ body{
   height: 2px;
   margin: 0px;
 }
+/**vista stock*/
+.viewStockproduct {
+  min-height: 530px;
+}
+.containerImageStock {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: map-get($color,colorWhite);
+  display: flex;
+  justify-content: center;
+  @include breakpoint(tablet) {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  @include breakpoint(laptop) {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  @include breakpoint(desktop) {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+.containerImageStock img{
+  margin: 0;
+  padding: 0;
+  width: 47%;
+  @include breakpoint(phablet) {
+    width: 40%;
+  }
+  @include breakpoint(tablet) {
+    width: 40%;
+  }
+  @include breakpoint(laptop) {
+    width: 30%;
+  }
+  @include breakpoint(desktop) {
+    width: 30%;
+  }
+}
+.containerTextStock {
+  background-color: map-get($color,colorWhite);
+  padding-top: 10px;
+  margin: 0;
+  @include breakpoint(tablet) {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  @include breakpoint(laptop) {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  @include breakpoint(desktop) {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+.allTextStock {
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 5px;
+}
+.allTextStock h3{
 
+}
+.textAvalaibleStock {
+  background-color: map-get($color,colorWhite);
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  @include breakpoint(tablet) {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  @include breakpoint(laptop) {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  @include breakpoint(desktop) {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+.textAvalaibleStock p {
+  margin-left: 30px;
+  margin-right: 30px;
+  background-color: map-get($color,greenLight);
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: map-get($color,greenMedium);
+  font-weight: 500;
+}
 
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));

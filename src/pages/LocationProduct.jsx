@@ -46,6 +46,7 @@ const LocationProduct = ({ apiGetProduct }) => {
     getProduct();
 
   }, []);
+  console.log(decoded);
 
   return (
     <section className='d-flex flex-column'>
@@ -53,7 +54,7 @@ const LocationProduct = ({ apiGetProduct }) => {
       <div className="containerTextProduct">
         <p>{decoded.name}</p>
         {
-          decoded.pasillo && <p>Pasillo: {decoded.pasillo}</p>
+          decoded.codigopasillo && <p>Pasillo: {decoded.codigopasillo}</p>
         }
       </div>
       <div className="containerImage">

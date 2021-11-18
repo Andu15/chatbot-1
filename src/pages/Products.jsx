@@ -36,7 +36,6 @@ const Products = ({ apiGetProduct }) => {
 
   //data filtrada
   let newData;
-
   if (!searcher.length >= 1) {
     newData = data;
   } else {
@@ -61,11 +60,13 @@ const Products = ({ apiGetProduct }) => {
             <hr />
           </div>
         </div>
-        <div className="row">
+        <div className="row pb-3">
           <div className="col d-flex mt-3">
             <i className="fa fa-map-marker" aria-hidden="true"></i>
+            <section className="textLocation">
             <p>Tottus Angamos</p>
             <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
+            </section>
           </div>
         </div>
       </section>
@@ -84,4 +85,3 @@ const Products = ({ apiGetProduct }) => {
 
 
 export default Products;
-
