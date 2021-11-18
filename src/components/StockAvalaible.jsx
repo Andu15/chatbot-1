@@ -7,7 +7,7 @@ const StockAvalaible = ({uniqueProduct}) => {
 
   const succesfulData = uniqueProduct.map(e=>
     (
-    <section className="viewStockproduct" key={e.sku}>
+    <section className="viewStockproduct" key={e.codigosku}>
       <section className="containerImageStock">
                               <img src={e.images} alt={e.name}/>
       </section>
