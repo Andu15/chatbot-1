@@ -28,6 +28,7 @@ const LocationProduct = ({ apiGetProduct }) => {
   let pasilloProd = decoded.codigopasillo.replace(/\./g, " ").replace(/ /g, "");
 
   const url = `https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/${decoded.codigopais}/LABORATORIA/${decoded.codigotienda}/${decoded.codigojerarquia}-${pasilloProd}.jpg`;
+  console.log(url)
 
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '3');
