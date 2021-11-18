@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import BtnReturn from '../components/BtnReturn';
+import BtnReturn from '../components/BtnReturn.jsx';
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import StockAvalaible from '../components/StockAvalaible.jsx';
