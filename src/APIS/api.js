@@ -53,12 +53,12 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
 
   const resData = dataAxios.data.results;
 
-  const filterpasillo = datapasilloCategory.filter(
-    (res) =>
-      res.codigo_tienda === Number(tienda) &&
-      res.categoria.includes(prod.toUpperCase())
-  );
-  //console.log("pasillos",filterpasillo);
+  // const filterpasillo = datapasilloCategory.filter(
+  //   (res) =>
+  //     res.codigo_tienda === Number(tienda) &&
+  //     res.categoria.includes(prod.toUpperCase())
+  // );
+  console.log("pasillos",filterpasillo);
 
   const resultado = resData.map((key) => {
     const data = {
@@ -70,8 +70,8 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
       marca: key.attributes.marca,
       ean: key.attributes.ean,
       description: key.description,
-      codigojerarquia: filterpasillo[0].jerarquia,
-      codigopasillo: filterpasillo[0].pasillo,
+      // codigojerarquia: filterpasillo[0].jerarquia,
+      // codigopasillo: filterpasillo[0].pasillo,
       codigopais: "PE",
       nombreproducto: prod, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
