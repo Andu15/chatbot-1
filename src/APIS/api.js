@@ -13,10 +13,12 @@ export const apiGetCategori = async (
   const url = `https://www.tottus.com.pe/api/product-search/by-category-slug?slug=${categoria}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
     url: url,
+    withCredentials:false,
     method: "GET",
     header:{
-      'Access-Control-Allow-Origin':'*'
-    }
+      'Access-Control-Allow-Origin':'https://tottus.herokuapp.com',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      }
   });
 
   const resData = dataAxios.data.results;
@@ -51,9 +53,11 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
   const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
     url: url,
+     withCredentials:false,
     method: "GET",
-    header:{
-      'Access-Control-Allow-Origin':'*'
+       header:{
+      'Access-Control-Allow-Origin':'https://tottus.herokuapp.com',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     }
   });
 
@@ -95,9 +99,11 @@ export const apiGetProductSku = async (sku, tienda) => {
   const url = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
   const dataAxios = await axios({
     url: url,
+     withCredentials:false,
     method: "GET",
     header:{
-      'Access-Control-Allow-Origin':'*'
+      'Access-Control-Allow-Origin':'https://tottus.herokuapp.com',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     }
   });
 
@@ -140,10 +146,13 @@ export const getStockSku = async (sku) => {
   const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/stock?sku=${sku}`;
   let stockAxios = await axios({
         method: "GET",
+        withCredentials:false,
         headers: { 
           'x-country': 'PE', 
           'x-commerce': 'Tottus', 
-          'x-usrtx': 'tss'
+          'x-usrtx': 'tss',
+          'Access-Control-Allow-Origin':'https://tottus.herokuapp.com',
+          'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         url: url,
  });  
