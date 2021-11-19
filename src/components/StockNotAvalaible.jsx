@@ -3,6 +3,13 @@ const StockNotAvalaible = ({ stock }) => {
   const filterStock = stock.filter((key) => key.storeName !== " ");
   console.log("filterStock", filterStock);
 
+    let numero = 0;
+    filterStock.forEach((a) => {
+      numero += parseInt(a.stockOnLine);
+    })  
+    console.log(numero);
+
+
   return (
     <section className="textAvalaibleStock">
       <p>
@@ -11,18 +18,36 @@ const StockNotAvalaible = ({ stock }) => {
         encontrarlo en:{" "}
       </p>
 
-      <section>
+      <section className="containerStockStore">
         {filterStock &&
           filterStock.map((item, index) => {
-            console.log("stockkkkkk", item.storeName !== " ");
+            console.log(filterStock);
 
             return (
-              <div key={index}>
-                <p>{item.storeName}</p>
-                <p>{item.stockAvailable}</p>
+              <>
+              <div key={index} className="stocKStore">
+                <div className="d-flex">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <h3>{item.storeName}</h3>
+                </div>
+                <h4>{item.stockAvailable} UN</h4>
               </div>
+            </>
             );
+            
           })}
+          <div className="stocKStore">
+                <div className="d-flex">
+                <h3>tottus.com</h3>
+                </div>
+              <h4>{numero} UN</h4>
+          </div>
+          <div className="stocKStore">
+                <div className="d-flex">
+                <h3>Fazil</h3>
+                </div>
+              <h4>{numero} UN</h4>
+          </div>
       </section>
     </section>
   );

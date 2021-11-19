@@ -15,8 +15,10 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
   }, []);
 
   const getstocks = async () => {
-    const codigoSku = decoded && decoded.codigosku;
-    const stockProduct = await getStockSku(codigoSku);
+    // const codigoSku = decoded && decoded.codigosku;
+    // const stockProduct = await getStockSku(codigoSku);
+    const stockProduct = await getStockSku("02200908");
+
       console.log("data stock api ", stockProduct);
      setSock(stockProduct);
 
@@ -71,19 +73,17 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
             } else  {
               return (
                 <StockNotAvalaible  stock={stock}/>
-          
               );
             }
           }))
           :<StockNotAvalaible  stock={stock}/>): 
           <section className="textAvalaibleStock">
-                 <p>
-                  {" "}
-                  STOCK: Lo sentimos, no tenemos el stock en la tienda Tottus {" "}
-                </p>
-                       </section>
-            }
-        
+            <p>
+              {" "}
+              STOCK: Lo sentimos, no tenemos el stock en la tienda Tottus {" "}
+            </p>
+          </section>
+        }
       </section>
     ));
 
