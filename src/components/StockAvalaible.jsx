@@ -12,9 +12,9 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
   }, []);
 
   const getstocks = async () => {
-    // const codigoSku = decoded && decoded.codigosku;
-    // const stockProduct = await getStockSku(codigoSku);
-    const stockProduct = await getStockSku("02200908");
+    const codigoSku = decoded && decoded.codigosku;
+    const stockProduct = await getStockSku(codigoSku);
+    // const stockProduct = await getStockSku("02200908");
      setSock(stockProduct);
 
     //viendo si hay un stock en la tienda

@@ -19,7 +19,8 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   sessionStorage.setItem('nombretienda', decoded.nombretienda);
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
   sessionStorage.setItem('codigopais', decoded.codigopais);
-  // sessionStorage.setItem('codigopais', decoded.codigopais);
+  sessionStorage.setItem('direccionTienda', decoded.direcciontienda);
+
 
   const queryProduct = async() =>{
     const info = await apiGetProductSku(decoded.codigosku, decoded.codigotienda);

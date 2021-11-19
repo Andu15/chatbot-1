@@ -13,9 +13,10 @@ const LocationProduct = () => {
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
 
-  sessionStorage.setItem('nombretienda', decoded.nombretienda);
+  localStorage.setItem('nombretienda', decoded.nombretienda);
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
   sessionStorage.setItem('codigopais', decoded.codigopais);
+  sessionStorage.setItem('direccionTienda', decoded.direcciontienda);
 
   let url;
   if (decoded.codigojerarquia && decoded.codigopasillo) {
