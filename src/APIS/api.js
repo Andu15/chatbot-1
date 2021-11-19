@@ -89,6 +89,7 @@ export const apiGetProductSku = async (sku, tienda) => {
       codigosku: key.sku,
       description: key.description,
       ean: key.attributes.ean,
+      marca: key.attributes.marca,
       codigojerarquia: (key.attributes.hierarchy.slice(0, 9)),
       codigopasillo: (filterpasillo.length > 0) ? (filterpasillo[0].pasillo) : "",
       codigopais: "PE",

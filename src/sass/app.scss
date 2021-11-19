@@ -363,6 +363,16 @@ body{
   color: map-get($color,colorWhite);
 
 }
+
+.marca{
+  text-transform: uppercase;
+  font-size: map-get($font-size,s) !important;
+  color: map-get($color,tottusMarca) !important;
+   
+}
+
+
+
 /*vista location*/
 .contenedorTotal {
   margin: 10px 30px 40px;

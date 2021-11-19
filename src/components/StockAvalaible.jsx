@@ -39,7 +39,8 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
         </section>
         <section className="containerTextStock">
           <div className="allTextStock">
-            <h3>{e.name}</h3>
+               <h3 >{e.name}</h3>
+            <p className="marca">{e.marca}</p>
             <p>S/ {e.prices} UN</p>
             {e.description.length > 50 ? (
               <p>
