@@ -25,7 +25,10 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   const queryProduct = async() =>{
     const info = await apiGetProductSku(decoded.codigosku, decoded.codigotienda);
     setUniqueProduct(info);
+    console.log(info)
   };
+
+
 
     
   let url;
@@ -40,6 +43,7 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   const getProduct = async () => {
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '10');
     setDataProducts(data);
+
   }
 
   useEffect(() => {
@@ -55,7 +59,7 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   return (
     <section className="">
       <BtnReturn />
-      <StockAvalaible uniqueProduct={uniqueProduct}/>
+      <StockAvalaible uniqueProduct={uniqueProduct} decoded={decoded}/>
       {/* <StockNotAvalaible /> */}
         {/* { 
           !!uniqueProduct.length ? <StockAvalaible uniqueProduct={uniqueProduct}/> : <StockNotAvalaible />
@@ -70,12 +74,15 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
             {
               dataProducts ? (dataProducts.map((item, index) => 
                 index === 0 ? (
+                  
                 <div className="carousel-item active" key={index}>
                   <section className="containerImageText">
                     <img src={item.images} className="" alt={item.name} />
                     <div className="textCarousel">
                       <h5>{item.name}</h5>
+                      <p>{item.marca} </p>
                       <p>s/{item.prices} UN</p>
+              
                     </div>
                   </section>
                 </div>
@@ -85,7 +92,9 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
                     <img src={item.images} className="" alt={item.name} />
                     <div className="textCarousel">
                       <h5>{item.name}</h5>
+                      <p>{item.marca} </p>
                       <p>s/{item.prices} UN</p>
+                          
                     </div>
                   </section>
                 </div>

@@ -35,7 +35,7 @@ export const Card = ({newData}) => {
               Ubicación
             </button>
             <button type="button" className="card-Btn-Stock" onClick={()=> handlerStock(elem)}>
-              Stock
+              Ver más...
             </button>
           </div>
         </div>
