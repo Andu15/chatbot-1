@@ -644,9 +644,18 @@ body{
   margin-right: 15px;
   padding: 10px 20px;
 }
+.stocKStore img {
+  width: 120px;
+  margin-bottom: 5px;
+}
 .stocKStore div {
+  justify-content: center;
   width: 170px;
 }
+.imgfazil {
+  width: 65px !important;
+}
+
 .stocKStore i{
   color: map-get($color,greenMedium);
   margin-left: 5px;
@@ -664,6 +673,7 @@ body{
   text-align: center;
   font-size: map-get($font-size,ml);
 }
+
 /* body{
   @include roboto-regular(map-get($color,black),map-get($font-size,m));
   background-image: url('../assets/img/background-stars.jpg');
