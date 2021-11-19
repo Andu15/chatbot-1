@@ -27,15 +27,7 @@ const LocationProduct = ({ apiGetProduct }) => {
     url = imgDefault;
   }
 
-
   const getProduct = async () => {
-    const stock =await getStockSku("10168696");
-    console.log("datastocs",stock );
-
-   const skupro =await apiGetProductSku ("10168696");
-   console.log("dataproduSku",skupro  );
-
-    console.log(decoded.nombreproducto);
 
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
     console.log("dataproducts",data );
