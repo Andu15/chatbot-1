@@ -30,15 +30,11 @@ const LocationProduct = () => {
 
   const getProduct = async () => {
 
-    const data2 = await getStockSku("40617494")
-    console.log('data2', data2);
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
     console.log('data', data);
 
     console.log(decoded.nombreproducto);
 
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
-    console.log("dataproducts", data);
 
     const orderData = data.sort(function (a, b) {
       if (a.marca === "tottus") {
