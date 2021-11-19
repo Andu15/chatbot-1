@@ -1,4 +1,3 @@
-import { set } from "date-fns/esm";
 import { useEffect, useState } from "react";
 import { getStockSku } from "../APIS/api";
 import StockNotAvalaible from "../components/StockNotAvalaible";
@@ -8,8 +7,6 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
   const [stock, setSock] = useState([]);
   const [filterStore, setfilterStore] = useState(false);
 
-  console.log("decoded", decoded);
-
   useEffect(() => {
     getstocks();
   }, []);
@@ -18,8 +15,6 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
     // const codigoSku = decoded && decoded.codigosku;
     // const stockProduct = await getStockSku(codigoSku);
     const stockProduct = await getStockSku("02200908");
-
-      console.log("data stock api ", stockProduct);
      setSock(stockProduct);
 
     //viendo si hay un stock en la tienda
@@ -27,7 +22,6 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
       (ele) => ele.store === parseInt(decoded.codigotienda)
     );
     setfilterStore(filterStoreStock);
-    console.log("filtrado", filterStoreStock);
   };
 
   const spinner = (
@@ -63,7 +57,6 @@ const StockAvalaible = ({ uniqueProduct, decoded }) => {
         </section>
         {stock && (stock.length>0)?(filterStore.length>0?(
           filterStore.map((elem) => {
-            console.log("keyss", elem);
             if (elem.stockAvailable) {
               return (
                 <section className="textAvalaibleStock">

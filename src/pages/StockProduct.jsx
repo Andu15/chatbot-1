@@ -15,7 +15,6 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
-  console.log(decoded);
 
   sessionStorage.setItem('nombretienda', decoded.nombretienda);
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
@@ -26,6 +25,8 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
     const info = await apiGetProductSku(decoded.codigosku, decoded.codigotienda);
     setUniqueProduct(info);
   };
+
+
 
     
   let url;

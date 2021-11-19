@@ -2,15 +2,12 @@ import tottuscom from '../assets/logohori.png';
 import fazil from '../assets/fazil.png';
 
 const StockNotAvalaible = ({ stock }) => {
-  console.log("stockssss caruusel", stock);
   const filterStock = stock.filter((key) => key.storeName !== " ");
-  console.log("filterStock", filterStock);
 
     let numero = 0;
     filterStock.forEach((a) => {
       numero += parseInt(a.stockOnLine);
     })  
-    console.log(numero);
 
 
   return (
@@ -24,10 +21,7 @@ const StockNotAvalaible = ({ stock }) => {
       <section className="containerStockStore">
         {filterStock &&
           filterStock.map((item, index) => {
-            console.log(filterStock);
             const precio = Math.trunc(parseInt(item.stockAvailable));
-            console.log(precio)
-
             return (
               <>
               <div key={index} className="stocKStore">

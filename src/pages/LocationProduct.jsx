@@ -3,18 +3,16 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import imgDefault from '../assets/oops.jpg';
-import { getStockSku, apiGetProduct } from '../APIS/api';
+import { apiGetProduct } from '../APIS/api';
 
 const LocationProduct = () => {
   const [dataProducts, setDataProducts] = useState([]);
-  // console.log(dataProducts)
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
 
-  // console.log(decoded);
   sessionStorage.setItem('nombretienda', decoded.nombretienda);
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
   sessionStorage.setItem('codigopais', decoded.codigopais);
@@ -27,13 +25,9 @@ const LocationProduct = () => {
     url = imgDefault;
   }
 
-  const getProduct = async () => { 
+  const getProduct = async () => {
 
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
-    console.log('data', data);
-
-    console.log(decoded.nombreproducto);
-
 
     const orderData = data.sort(function (a, b) {
       if (a.marca === "tottus") {
@@ -44,14 +38,12 @@ const LocationProduct = () => {
       return 0;
     });
     setDataProducts(orderData);
-    // console.log(orderData)
   };
 
   useEffect(() => {
     getProduct();
 
   }, []);
-  // console.log(decoded);
 
   return (
     <section className='d-flex flex-column'>
@@ -63,7 +55,7 @@ const LocationProduct = () => {
         }
       </div>
       <div className="containerImage">
-        <img src={url} alt='mapa del producto' />
+        <img src={url} onError={(e)=>{e.target.onerror = null; e.target.src=imgDefault}} alt='mapa del producto' />
       </div>
       <div className="col titleCarousel">
         <h1>Productos relacionados</h1>
