@@ -80,6 +80,7 @@ const LocationProduct = () => {
                       <img src={item.images} className="" alt={item.name} />
                       <div className="textCarousel">
                         <h5>{item.name}</h5>
+                        <p>{item.marca}</p>
                         <p>s/{item.prices} UN</p>
                       </div>
                     </section>
@@ -90,6 +91,7 @@ const LocationProduct = () => {
                       <img src={item.images} className="" alt={item.name} />
                       <div className="textCarousel">
                         <h5>{item.name}</h5>
+                        <p>{item.marca} </p>
                         <p>s/{item.prices} UN</p>
                       </div>
                     </section>
