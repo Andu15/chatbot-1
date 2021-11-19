@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import jwt from "jsonwebtoken";
 
 export const Card = ({newData}) => {
-  // console.log(newData);
   let navigate = useNavigate();
 
   const handlerLocation = (data) =>{
