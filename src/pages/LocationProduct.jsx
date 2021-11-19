@@ -31,7 +31,10 @@ const LocationProduct = () => {
   
 
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
-    console.log("dataproducts", data);
+    console.log('data', data);
+
+    console.log(decoded.nombreproducto);
+
 
     const orderData = data.sort(function (a, b) {
       if (a.marca === "tottus") {

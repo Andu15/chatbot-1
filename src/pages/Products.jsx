@@ -21,7 +21,7 @@ const Products = ({ apiGetProduct }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       getProduct();
-      
+
     }, 2500);
     return () => clearTimeout(timer);
   }, [searcher]);
@@ -31,8 +31,9 @@ const Products = ({ apiGetProduct }) => {
     setSearcher(event.target.value);
   };
 
-  const onClick = () => searcher(product);
-  console.log(onClick);
+  const onClick = (event) => {
+    console.log(event.target);
+  }
 
   //data filtrada
   let newData;
@@ -45,7 +46,7 @@ const Products = ({ apiGetProduct }) => {
       return dataInput.includes(dataSearch);
     });
   };
-  
+
   return (
     <section className="">
       <section className="headerProducts">
@@ -64,12 +65,13 @@ const Products = ({ apiGetProduct }) => {
           <div className="col d-flex mt-3">
             <i className="fa fa-map-marker" aria-hidden="true"></i>
             <section className="textLocation">
-            <p>Tottus Angamos</p>
-            <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
+              <p>Tottus Angamos</p>
+              <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
             </section>
           </div>
         </div>
       </section>
+      {/* <Search onChange={handleSearch} product={product} onClick={onClick} /> */}
       <Search onChange={handleSearch} product={product} onClick={onClick} />
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
