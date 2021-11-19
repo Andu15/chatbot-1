@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import imgDefault from '../assets/oops.jpg';
+import {getStockSku,apiGetProductSku} from '../APIS/api';
 
 const LocationProduct = ({ apiGetProduct }) => {
   const [dataProducts, setDataProducts] = useState([]);
@@ -28,8 +29,17 @@ const LocationProduct = ({ apiGetProduct }) => {
 
 
   const getProduct = async () => {
-    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
+    const stock =await getStockSku("10168696");
+    console.log("datastocs",stock );
 
+   const skupro =await apiGetProductSku ("10168696");
+   console.log("dataproduSku",skupro  );
+
+    console.log(decoded.nombreproducto);
+
+    const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
+    console.log("dataproducts",data );
+    
     const orderData = data.sort(function (a, b) {
       if (a.marca === "tottus") {
         return 1;

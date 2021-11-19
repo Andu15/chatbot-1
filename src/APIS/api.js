@@ -3,20 +3,22 @@ import { datapasilloCategory } from "./category";
 import {dataTienda}  from "./tiendasInfo";
 
 
+console.log("estas en la nueva repo");
+
 
 export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
   const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   
   //const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
   const dataAxios = await axios({
-    url: url,
-     withCredentials:false,
     method: "GET",
-       header:{
-        'x-country': 'PE', 
-        'x-commerce': 'Tottus', 
-        'x-usrtx': 'tss',
-    }
+    withCredentials:false,
+    headers: { 
+      'x-country': 'PE', 
+      'x-commerce': 'Tottus', 
+     'x-usrtx': 'tss',
+    },
+    url: url,
   });
 
   const resData = dataAxios.data.results; 
@@ -57,14 +59,14 @@ export const apiGetProductSku = async (sku, tienda) => {
   const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/skuList?productsList=${sku}`;
   //const url = `https://www.tottus.com.pe/api/content/skuList?productsList%5B0%5D=${sku}`;
   const dataAxios = await axios({
-    url: url,
-     withCredentials:false,
     method: "GET",
-    header:{
-      'x-country': 'PE', 
-      'x-commerce': 'Tottus', 
-      'x-usrtx': 'tss',
-    }
+    // withCredentials:false,
+    headers: { 
+      'x-country':'PE', 
+      'x-commerce':'Tottus', 
+     'x-usrtx': 'tss',
+    },
+    url: url,
   });
 
   const resData = dataAxios.data.results;
@@ -78,6 +80,8 @@ export const apiGetProductSku = async (sku, tienda) => {
         res.jerarquia=== key.attributes.hierarchy.slice(0,9))
       }
     );
+
+    console.log("pasillllll",filterpasillo );
     
     const data = {
       id: key.id,
@@ -108,10 +112,9 @@ export const getStockSku = async (sku) => {
         method: "GET",
         withCredentials:false,
         headers: { 
-          'x-country': 'PE', 
-          'x-commerce': 'Tottus', 
-         'x-usrtx': 'tss',
-
+          'x-country':'PE', 
+          'x-commerce':'Tottus', 
+         'x-usrtx':'tss',
         },
         url: url,
  });  
