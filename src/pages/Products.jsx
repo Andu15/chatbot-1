@@ -34,12 +34,11 @@ const Products = () => {
   const setData = async () => {
     const response = await apiGetProduct(searcher, codigoTienda, "1", "20");
     setProduct(response);
-  }
+  } 
 
   const onClick = async () => {
     setData();
   }
-
  
   if (!searcher.length >= 1) {
     newData = [];

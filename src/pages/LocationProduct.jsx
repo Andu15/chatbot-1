@@ -27,8 +27,7 @@ const LocationProduct = () => {
     url = imgDefault;
   }
 
-  const getProduct = async () => {
-  
+  const getProduct = async () => { 
 
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
     console.log('data', data);
