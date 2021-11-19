@@ -3,9 +3,11 @@ import smallLogo from "../assets/logoTottus-64x64.png";
 import { Card } from "../components/Card";
 import { Search } from "../components/Search";
 import { dataDura } from "../APIS/dataDura";
+import { apiGetProduct } from "../APIS/api";
 
-const Products = ({ apiGetProduct }) => {
-  const data = dataDura;
+const Products = () => {
+  let newData = dataDura;
+  // const data = dataDura;
   const [product, setProduct] = useState([]);
   const [searcher, setSearcher] = useState([]);
 
@@ -14,30 +16,34 @@ const Products = ({ apiGetProduct }) => {
   const nombreTienda = sessionStorage.getItem('nombretienda');
 
   const getProduct = async () => {
-    const data = await apiGetProduct(searcher, codigoTienda, "1", "");
+    const data = await apiGetProduct(searcher, codigoTienda, "1", "20");
     setProduct(data);
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getProduct();
-      
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, [searcher]);
+  }, []);
 
   //function search//
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     setSearcher(event.target.value);
+    if (event.target.value.length > 3) {
+      await setData();
+    }
   };
 
-  const onClick = () => searcher(product);
-  console.log(onClick);
+  const setData = async () => {
+    const response = await apiGetProduct(searcher, codigoTienda, "1", "20");
+    setProduct(response);
+  }
+
+  const onClick = async () => {
+    setData();
+  }
 
   //data filtrada
-  let newData;
   if (!searcher.length >= 1) {
-    newData = data;
+    newData = [];
+    newData = dataDura;
   } else {
     newData = product.filter((arr) => {
       const dataInput = arr.name.toLowerCase();
@@ -45,7 +51,7 @@ const Products = ({ apiGetProduct }) => {
       return dataInput.includes(dataSearch);
     });
   };
-  
+
   return (
     <section className="">
       <section className="headerProducts">
@@ -64,13 +70,22 @@ const Products = ({ apiGetProduct }) => {
           <div className="col d-flex mt-3">
             <i className="fa fa-map-marker" aria-hidden="true"></i>
             <section className="textLocation">
-            <p>Tottus Angamos</p>
-            <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
+              <p>Tottus Angamos</p>
+              <p>Av. Angamos Nro. 1803, Surquillo 15038</p>
             </section>
           </div>
         </div>
       </section>
-      <Search onChange={handleSearch} product={product} onClick={onClick} />
+      {/* <Search onChange={handleSearch} product={product} onClick={onClick} /> */}
+      <section className="searchProducts">
+        <div className="input-group">
+          <input type="search" className="form-control mySearchProducts" onChange={handleSearch} placeholder="Buscar" aria-label="Search"
+            aria-describedby="search-addon" name="searcher" value={searcher.value} />
+          <span className="input-group-text mySearchProducts" id="search-addon">
+            <i onClick={onClick} className="fas fa-search"></i>
+          </span>
+        </div>
+      </section>
       <section className="titleProducts">
         <h2>Nuestros productos</h2>
       </section>
