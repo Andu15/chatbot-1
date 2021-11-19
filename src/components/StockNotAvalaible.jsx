@@ -1,3 +1,6 @@
+import tottuscom from '../assets/logohori.png';
+import fazil from '../assets/fazil.png';
+
 const StockNotAvalaible = ({ stock }) => {
   console.log("stockssss caruusel", stock);
   const filterStock = stock.filter((key) => key.storeName !== " ");
@@ -22,6 +25,8 @@ const StockNotAvalaible = ({ stock }) => {
         {filterStock &&
           filterStock.map((item, index) => {
             console.log(filterStock);
+            const precio = Math.trunc(parseInt(item.stockAvailable));
+            console.log(precio)
 
             return (
               <>
@@ -30,7 +35,7 @@ const StockNotAvalaible = ({ stock }) => {
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <h3>{item.storeName}</h3>
                 </div>
-                <h4>{item.stockAvailable} UN</h4>
+                <h4>{precio} UN</h4>
               </div>
             </>
             );
@@ -38,13 +43,13 @@ const StockNotAvalaible = ({ stock }) => {
           })}
           <div className="stocKStore">
                 <div className="d-flex">
-                <h3>tottus.com</h3>
+                <img src={tottuscom} alt="" />
                 </div>
               <h4>{numero} UN</h4>
           </div>
           <div className="stocKStore">
                 <div className="d-flex">
-                <h3>Fazil</h3>
+                <img className="imgfazil" src={fazil} alt="" />
                 </div>
               <h4>{numero} UN</h4>
           </div>
