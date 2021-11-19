@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import imgDefault from '../assets/oops.jpg';
-import {getStockSku,apiGetProductSku} from '../APIS/api';
+import { getStockSku, apiGetProduct } from '../APIS/api';
 
-const LocationProduct = ({ apiGetProduct }) => {
+const LocationProduct = () => {
   const [dataProducts, setDataProducts] = useState([]);
-  console.log(dataProducts)
+  // console.log(dataProducts)
 
   let { search } = useLocation();
   let query = new URLSearchParams(search);
   const tokenPar = query.getAll("token")[0];
   const decoded = jwt_decode(tokenPar);
 
-  console.log(decoded);
+  // console.log(decoded);
   sessionStorage.setItem('nombretienda', decoded.nombretienda);
   sessionStorage.setItem('codigotienda', decoded.codigotienda);
   sessionStorage.setItem('codigopais', decoded.codigopais);
@@ -27,11 +27,14 @@ const LocationProduct = ({ apiGetProduct }) => {
     url = imgDefault;
   }
 
-  const getProduct = async () => {
+  const getProduct = async () => { 
 
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
-    console.log("dataproducts",data );
-    
+    console.log('data', data);
+
+    console.log(decoded.nombreproducto);
+
+
     const orderData = data.sort(function (a, b) {
       if (a.marca === "tottus") {
         return 1;
@@ -41,14 +44,14 @@ const LocationProduct = ({ apiGetProduct }) => {
       return 0;
     });
     setDataProducts(orderData);
-    console.log(orderData)
+    // console.log(orderData)
   };
 
   useEffect(() => {
     getProduct();
 
   }, []);
-  console.log(decoded);
+  // console.log(decoded);
 
   return (
     <section className='d-flex flex-column'>
