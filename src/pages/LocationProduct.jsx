@@ -56,7 +56,7 @@ const LocationProduct = () => {
         }
       </div>
       <div className="containerImage">
-        <img src={url} onError={(e)=>{e.target.onerror = null; e.target.src=imgDefault}} alt='mapa del producto' />
+        <img src={url} onError={(e)=>{e.target.onerror = null; e.target.src="https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/J02010301-6A.jpg"}} alt='mapa del producto' />
       </div>
       <div className="col titleCarousel">
         <h1>Productos relacionados</h1>
