@@ -40,7 +40,7 @@ const Products = () => {
     setData();
   }
 
-  //data filtrada
+ 
   if (!searcher.length >= 1) {
     newData = [];
     newData = dataDura;
