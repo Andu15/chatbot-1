@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import imgDefault from '../assets/oops.jpg';
 import { getStockSku, apiGetProduct } from '../APIS/api';
+import NodeFetch from 'node-fetch'
 
 const LocationProduct = () => {
   const [dataProducts, setDataProducts] = useState([]);
@@ -27,12 +28,12 @@ const LocationProduct = () => {
     url = imgDefault;
   }
 
-  const getProduct = async () => { 
+  const getProduct = async () => {
 
     const data = await apiGetProduct(decoded.nombreproducto, '123', '1', '5');
-    console.log('data', data);
+    // console.log('data', data);
 
-    console.log(decoded.nombreproducto);
+    // console.log(decoded.nombreproducto);
 
 
     const orderData = data.sort(function (a, b) {
@@ -51,7 +52,25 @@ const LocationProduct = () => {
     getProduct();
 
   }, []);
-  // console.log(decoded);
+  console.log(url);
+
+
+  const validateLink = (link) => NodeFetch(link.href)
+    .then((response) => {
+      console.log(response)
+      if (response.status === 200) {
+        return 'la data';
+      }
+      return 'la imagen';
+    })
+    .catch((err) => {console.log(err) });
+    
+    
+    validateLink("https://storage.googleapis.com/tot-bi-corp-chatbot-dev.appspot.com/EXPERIENCIA-DIGITAL/PE/LABORATORIA/123/J01010101-1B.jpg").then(resolve => {
+      console.log(resolve);
+  }).catch(reject => console.log( reject));
+
+
 
   return (
     <section className='d-flex flex-column'>
