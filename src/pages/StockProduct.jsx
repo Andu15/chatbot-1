@@ -55,7 +55,7 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   return (
     <section className="">
       <BtnReturn />
-      <StockAvalaible uniqueProduct={uniqueProduct}/>
+      <StockAvalaible uniqueProduct={uniqueProduct} decoded={decoded}/>
       {/* <StockNotAvalaible /> */}
         {/* { 
           !!uniqueProduct.length ? <StockAvalaible uniqueProduct={uniqueProduct}/> : <StockNotAvalaible />
