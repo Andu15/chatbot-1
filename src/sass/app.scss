@@ -300,10 +300,12 @@ body{
 }
 .myCard img {
   width: 55%;
+  height: 8em;
+  object-fit: contain;
   margin: 10px 10px 5px;
 }
 .containerProduts {
-  margin: 0px 30px;
+  margin: 0px 25px;
   margin-bottom: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
