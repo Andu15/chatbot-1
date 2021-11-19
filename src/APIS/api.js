@@ -7,9 +7,11 @@ console.log("estas en la nueva repo");
 
 
 export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
-  const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
 
-  //const url = `https://www.tottus.com.pe/api/product-search?q=${prod}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
+  const newProd = encodeURI(prod);
+  console.log(newProd);
+  const url = `https://lid-per-dot-tot-bi-corp-chatbot-dev.appspot.com/api-per/product-search?q=${newProd}&channel=${tienda}&page=${pagInicio}&perPage=${pagFinal}`;
+
   let dataAxios = await axios({
     method: "GET",
     withCredentials: false,
@@ -45,7 +47,7 @@ export const apiGetProduct = async (prod, tienda, pagInicio, pagFinal) => {
       ean: key.attributes.ean,
       description: key.description,
       codigojerarquia: (key.attributes.hierarchy.slice(0, 9)),
-      codigopasillo: (filterpasillo.length > 0) ? ((filterpasillo.map(key => key.pasillo))[0]) : " ", 
+      codigopasillo: (filterpasillo.length > 0) ? ((filterpasillo.map(key => key.pasillo))[0]) : " ",
       codigopais: "PE",
       nombreproducto: key.name, //tengo duda aqui si debe ser categroia o producto
       codigotienda: tienda,
@@ -91,7 +93,7 @@ export const apiGetProductSku = async (sku, tienda) => {
       codigosku: key.sku,
       description: key.description,
       ean: key.attributes.ean,
-      codigojerarquia: (key.attributes.hierarchy.slice(0, 9)), 
+      codigojerarquia: (key.attributes.hierarchy.slice(0, 9)),
       codigopasillo: (filterpasillo.length > 0) ? (filterpasillo[0].pasillo) : "",
       codigopais: "PE",
       nombreproducto: key.name, //tengo duda aqui si debe ser categroia o producto
