@@ -25,7 +25,10 @@ const StockProduct = ({ apiGetProductSku,  apiGetProduct}) => {
   const queryProduct = async() =>{
     const info = await apiGetProductSku(decoded.codigosku, decoded.codigotienda);
     setUniqueProduct(info);
+    console.log(info)
   };
+
+
 
     
   let url;
